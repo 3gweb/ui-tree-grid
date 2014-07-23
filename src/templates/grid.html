@@ -7,6 +7,6 @@
     </div>
 
     <div class="border">
-        <div ng-include="'../src/templates/grid-row.html'" ng-repeat="row in data | orderBy:predicate:reverse | filter:searchText"></div>
+        <div ng-include="'grid-row.html'" ng-repeat="row in data | orderBy:predicate:reverse | filter:searchText"></div>
     </div>
 </div>

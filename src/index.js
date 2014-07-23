@@ -1,14 +1,17 @@
+'use strict';
+
+/* global _ */
 String.prototype.camelCaseToNormalText = function () {
 	return this.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
 		return str.toUpperCase();
 	});
 };
 
-angular.module('uiGrid', []);
+angular.module('uiTreeGrid', []);
 
-angular.module('uiGrid').value('uiGridConfig', {});
+angular.module('uiTreeGrid').value('uiGridConfig', {});
 
-angular.module('uiGrid').directive('uiGrid', function (uiGridConfig) {
+angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig) {
 
 	var options = {};
 
@@ -18,13 +21,13 @@ angular.module('uiGrid').directive('uiGrid', function (uiGridConfig) {
 			return false;
 		}
 
-		scope.columns = []
+		scope.columns = [];
 		Object.keys(scope.data[0]).forEach(function (item) {
 			scope.columns.push({
 				id: item,
 				label: item.camelCaseToNormalText()
 			});
-		})
+		});
 	}
 
 	if (uiGridConfig) {
@@ -34,7 +37,7 @@ angular.module('uiGrid').directive('uiGrid', function (uiGridConfig) {
 	return {
 		restrict: 'A',
 		replace: true,
-		templateUrl: '../src/templates/grid.html',
+		templateUrl: 'grid.html',
 		scope: {
 			searchText: '=',
 			iconTemplate: '@'
