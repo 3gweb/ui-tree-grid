@@ -49,6 +49,16 @@ module.exports = function (grunt) {
 			}
 		},
 		concat: {
+			options: {
+				banner: '/***********************************************\n' +
+					'* ui-tree-grid JavaScript Library\n' +
+					'* Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md \n' +
+					'* License: MIT (http://www.opensource.org/licenses/mit-license.php)\n' +
+					'* Compiled At: <%= grunt.template.today("mm/dd/yyyy HH:MM") %>\n' +
+					'***********************************************/\n' +
+					'(function(window) {\n',
+				footer: '\n}(window));'
+			},
 			dist: {
 				src: ['<%= srcFiles %>'],
 				dest: '<%= buildFolder %>/js/ui-tree-grid.js'
