@@ -30,6 +30,18 @@ module.exports = function (grunt) {
 			build: ['<%= buildFolder %>']
 		},
 		ngtemplates: {
+			options: {
+				htmlmin: {
+					collapseBooleanAttributes: true,
+					collapseWhitespace: true,
+					removeAttributeQuotes: true,
+					removeComments: true, // Only if you don't use comment directives!
+					removeEmptyAttributes: true,
+					removeRedundantAttributes: true,
+					removeScriptTypeAttributes: true,
+					removeStyleLinkTypeAttributes: true
+				}
+			},
 			uiTreeGrid: {
 				cwd: 'src/templates',
 				src: '*.html',
@@ -37,9 +49,6 @@ module.exports = function (grunt) {
 			}
 		},
 		concat: {
-			options: {
-				separator: ';'
-			},
 			dist: {
 				src: ['<%= srcFiles %>'],
 				dest: '<%= buildFolder %>/js/ui-tree-grid.js'
