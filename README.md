@@ -1,4 +1,14 @@
 ui-tree-grid
 ============
 
-Grid para angular 
+Esta diretiva permite criar tabelas com sub linhas
+
+# Requisitos
+
+## Configuração
+
+## Teste
+
+## Uso
+
+## Opções
