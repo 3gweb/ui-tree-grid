@@ -57,6 +57,13 @@ module.exports = function (grunt) {
 					'<%= buildFolder %>/js/ui-tree-grid.min.js': ['<%= buildFolder %>/js/ui-tree-grid.js']
 				}
 			}
+		},
+		cssmin: {
+			build: {
+				files: {
+					'<%= buildFolder %>/css/ui-tree-grid.min.css': ['src/style/ui-tree-grid.css']
+				}
+			}
 		}
 	});
 
@@ -69,7 +76,8 @@ module.exports = function (grunt) {
 		'ngtemplates',
 		'concat',
 		'ngmin',
-		'uglify'
+		'uglify',
+		'cssmin'
 	]);
 
 	grunt.registerTask('default', [
