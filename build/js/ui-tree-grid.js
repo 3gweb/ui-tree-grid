@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 07/23/2014 15:29
+* Compiled At: 07/23/2014 16:08
 ***********************************************/
 (function (window) {
   'use strict';
@@ -40,7 +40,8 @@
         templateUrl: 'grid.html',
         scope: {
           searchText: '=',
-          iconTemplate: '@'
+          iconTemplate: '@',
+          selectRow: '&'
         },
         link: function ($scope, $elm, attrs) {
           $scope.data = $scope.$eval(attrs.data);
@@ -55,6 +56,9 @@
           $scope.isVisibleIcon = function () {
             return !_.isUndefined($scope.iconTemplate);
           };
+          $scope.clickRow = function (row, index) {
+            $scope.selectRow()(row, index);
+          };
         }
       };
     }
@@ -63,7 +67,7 @@
     '$templateCache',
     function ($templateCache) {
       'use strict';
-      $templateCache.put('grid-row.html', '<div class=border><div class=row><div ng-if=isVisibleIcon() class=col-xs-1 ng-include=iconTemplate></div><div class=col-xs-3 ng-repeat="column in columns">{{row[column.id]}}</div></div><div ng-if=row.child class=child><div ng-include="\'grid-row.html\'" ng-repeat="row in row.child | orderBy:predicate:reverse | filter:searchText"></div></div></div>');
+      $templateCache.put('grid-row.html', '<div class=border><div class=row ng-click="clickRow(row, $index);"><div ng-if=isVisibleIcon() class=col-xs-1 ng-include=iconTemplate></div><div class=col-xs-3 ng-repeat="column in columns">{{row[column.id]}}</div></div><div ng-if=row.child class=child><div ng-include="\'grid-row.html\'" ng-repeat="row in row.child | orderBy:predicate:reverse | filter:searchText"></div></div></div>');
       $templateCache.put('grid.html', '<div><div class=row><div ng-repeat="column in columns" class=col-xs-4 ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=border><div ng-include="\'grid-row.html\'" ng-repeat="row in data | orderBy:predicate:reverse | filter:searchText"></div></div></div>');
     }
   ]);

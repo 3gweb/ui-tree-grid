@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <section class="container">
+    <section class="container" ng-controller="SampleCtrl">
         <label for="search">search</label>
         <input type="text" ng-model="search"/>
 
@@ -18,7 +18,7 @@
             columns="[{id: 'name', label: 'Nome'}, {id: 'idade', label: 'Idade'}]"
             data="[{name: 'Abner', idade: 29, child: [{name: 'Guilherme', idade: 28, child: [{name: 'Bruna', idade: 16 },{name: 'Adilson', idade: 18, child: [{name: 'Rafa', idade: 18 }] }] }] }, {name: 'Teste', idade: 28, child: [{name: 'Oppa', idade: 5 }] }]"
             search-text="search"
-            icon-template="icon.html"
+            select-row="selectRow"
         ></div>
     </section>
 

@@ -2,7 +2,7 @@ angular.module('uiTreeGrid').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('grid-row.html',
-    "<div class=border><div class=row><div ng-if=isVisibleIcon() class=col-xs-1 ng-include=iconTemplate></div><div class=col-xs-3 ng-repeat=\"column in columns\">{{row[column.id]}}</div></div><div ng-if=row.child class=child><div ng-include=\"'grid-row.html'\" ng-repeat=\"row in row.child | orderBy:predicate:reverse | filter:searchText\"></div></div></div>"
+    "<div class=border><div class=row ng-click=\"clickRow(row, $index);\"><div ng-if=isVisibleIcon() class=col-xs-1 ng-include=iconTemplate></div><div class=col-xs-3 ng-repeat=\"column in columns\">{{row[column.id]}}</div></div><div ng-if=row.child class=child><div ng-include=\"'grid-row.html'\" ng-repeat=\"row in row.child | orderBy:predicate:reverse | filter:searchText\"></div></div></div>"
   );
 
 

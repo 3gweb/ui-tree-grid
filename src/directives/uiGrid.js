@@ -30,7 +30,8 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig) {
 		templateUrl: 'grid.html',
 		scope: {
 			searchText: '=',
-			iconTemplate: '@'
+			iconTemplate: '@',
+			selectRow: '&'
 		},
 		link: function ($scope, $elm, attrs) {
 			$scope.data = $scope.$eval(attrs.data);
@@ -48,6 +49,10 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig) {
 
 			$scope.isVisibleIcon = function () {
 				return !_.isUndefined($scope.iconTemplate);
+			};
+
+			$scope.clickRow = function (row, index) {
+				$scope.selectRow()(row, index);
 			};
 		}
 	};
