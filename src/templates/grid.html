@@ -5,8 +5,7 @@
             <span  ng-class="{true: 'fa fa-sort-asc', false: 'fa fa-sort-desc'}[reverse]" ng-if="column.id == predicate"></span>
         </div>
     </div>
-
     <div class="tg">
-        <div class="tg-include" ng-include="'../src/templates/grid-row.html'" ng-repeat="row in data | orderBy:predicate:reverse | filter:searchText"></div>
+        <div class="tg-include" ng-include="'grid-row.html'" ng-repeat="row in data | orderBy:predicate:reverse | filter:searchText"></div>
     </div>
 </div>
