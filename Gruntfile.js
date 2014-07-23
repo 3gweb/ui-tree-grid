@@ -20,6 +20,27 @@ module.exports = function (grunt) {
 			'build'
 		],
 		// Config Tasks
+		watch: {
+			livereload: {
+				options: {
+					livereload: '<%= connect.options.livereload %>'
+				},
+				files: ['<%= srcFiles %>']
+			}
+		},
+		connect: {
+			options: {
+				port: 9000,
+				hostname: '0.0.0.0'
+			},
+			livereload: {
+				options: {
+					open: true,
+					livereload: true,
+					base: ['./samples/', './build/']
+				}
+			}
+		},
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc'
@@ -89,6 +110,14 @@ module.exports = function (grunt) {
 	/*
 	 Tasks
 	 */
+	grunt.registerTask('serve', function () {
+		grunt.task.run([
+			'build',
+			'connect:livereload',
+			'watch'
+		]);
+	});
+
 	grunt.registerTask('build', 'Build ui-tree-grid', [
 		'clean',
 		'jshint',
