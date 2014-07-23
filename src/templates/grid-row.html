@@ -1,12 +1,16 @@
-<div class="border">
+<div class="tg-include-content">
     <div class="row">
-        <div ng-if="isVisibleIcon()" class="col-xs-1" ng-include="iconTemplate"></div>
-        <div class="col-xs-3" ng-repeat="column in columns">
+        <div ng-if="isVisibleIcon()" class="column col-xs-1" ng-include="iconTemplate">
+            <button class="btn btn-icon">
+                <i class="fa fa-caret-down"></i>
+            </button>
+        </div>
+        <div class="column col-xs-4" ng-repeat="column in columns">
             {{row[column.id]}}
         </div>
     </div>
 
-    <div ng-if="row.child" class="child">
-        <div ng-include="'../src/templates/grid-row.html'" ng-repeat="row in row.child | orderBy:predicate:reverse | filter:searchText"></div>
+    <div class="tg" ng-if="row.child">
+        <div class="tg-include-child" ng-include="'../src/templates/grid-row.html'" ng-repeat="row in row.child | orderBy:predicate:reverse | filter:searchText"></div>
     </div>
 </div>

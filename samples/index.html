@@ -2,7 +2,7 @@
 <html ng-app="uiGrid">
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>UI Tree Grid</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../src/style/ui-tree-grid.css"/>
@@ -14,11 +14,38 @@
 
     <div
         ui-grid=""
-        columns="[{id: 'name', label: 'Nome'}, {id: 'idade', label: 'Idade'}]"
-        data="[{name: 'Abner', idade: 29, child: [{name: 'Guilherme', idade: 28, child: [{name: 'Bruna', idade: 16 },{name: 'Adilson', idade: 18, child: [{name: 'Rafa', idade: 18 }] }] }] }, {name: 'Teste', idade: 28, child: [{name: 'Oppa', idade: 5 }] }]"
-        search-text="search"
-        icon-template="icon.html"
-    ></div>
+
+        columns="[
+            {id: 'name', label: 'Nome'},
+            {id: 'idade', label: 'Idade'}
+        ]"
+
+        data="[
+            {
+                name: 'Abner', idade: 29,
+                child: [
+                    {
+                        name: 'Guilherme', idade: 28,
+                        child: [
+                            {name: 'Bruna', idade: 16 },
+                            {name: 'Adilson', idade: 18,
+                                child: [
+                                    {name: 'Rafa', idade: 18 }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: 'Teste', idade: 28,
+                child: [
+                    {name: 'Oppa', idade: 5 }
+                ]
+            }
+        ]"
+
+        search-text="search"></div>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>

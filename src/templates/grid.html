@@ -1,12 +1,12 @@
-<div>
-    <div class="row">
-        <div ng-repeat="column in columns" class="col-xs-4" ng-click="sort(column.id, reverse);">
+<div class="ui-tree-grid bordered">
+    <div class="tg-header row">
+        <div ng-repeat="column in columns" class="column col-xs-4" ng-click="sort(column.id, reverse);">
             {{column.label}}
             <span  ng-class="{true: 'fa fa-sort-asc', false: 'fa fa-sort-desc'}[reverse]" ng-if="column.id == predicate"></span>
         </div>
     </div>
 
-    <div class="border">
-        <div ng-include="'../src/templates/grid-row.html'" ng-repeat="row in data | orderBy:predicate:reverse | filter:searchText"></div>
+    <div class="tg">
+        <div class="tg-include" ng-include="'../src/templates/grid-row.html'" ng-repeat="row in data | orderBy:predicate:reverse | filter:searchText"></div>
     </div>
 </div>
