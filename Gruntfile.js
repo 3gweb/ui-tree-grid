@@ -25,7 +25,10 @@ module.exports = function (grunt) {
 				options: {
 					livereload: '<%= connect.options.livereload %>'
 				},
-				files: ['<%= srcFiles %>']
+				files: [
+					'<%= srcFiles %>',
+					'src/style/**.css'
+				]
 			}
 		},
 		connect: {
