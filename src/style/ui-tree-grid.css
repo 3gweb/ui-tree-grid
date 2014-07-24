@@ -6,13 +6,20 @@
 /*// UI-TREE-GRID DEFAULT */
 .ui-tree-grid {
     width: 100%;
-    overflow: hidden;
+    max-height: 350px;
+    overflow: auto;
     margin-bottom: 15px;
 }
 .ui-tree-grid .row {
     margin: 0;
     line-height: 2.5;
     box-sizing: border-box;
+}
+.ui-tree-grid .row .column {
+    border-right: 1px solid #e5e5e5;
+}
+.ui-tree-grid .row .column:last-child {
+    border-right: none;
 }
 .ui-tree-grid .tg-header.row {
     border-top: none;
@@ -26,16 +33,15 @@
     border-radius: 5px;
     border: 1px solid #e5e5e5;
 }
-/*// UI-TREE-GRID abbreviation tree-grid class to tg */
-.tg-header {
-    font-weight: bold;
-}
+
 .ui-tree-grid .tg-header.row:hover {
     background-color: transparent;
 }
 /*// UI-TREE-GRID tg */
-.tg {
-
+/*// UI-TREE-GRID abbreviation tree-grid class to tg */
+.tg {}
+.tg-header {
+    font-weight: bold;
 }
 .tg-include {
     border-top: 1px solid #e5e5e5;
@@ -43,9 +49,7 @@
 .tg-include:first-child {
     border-top: none;
 }
-.tg-include .tg {
-
-}
+.tg-include .tg {}
 /*// UI-TREE-GRID LEVEL ONE */
 .tg-include-child .column:first-child {
     padding-left: 35px;
