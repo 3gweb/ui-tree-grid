@@ -1,5 +1,5 @@
 module.exports = function (grunt) {
-
+	'use strict';
 	// Load all grunt tasks
 	require('load-grunt-tasks')(grunt);
 	require('time-grunt')(grunt);
@@ -8,26 +8,38 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		// Config Variables
 		pkg: grunt.file.readJSON('package.json'),
-		templates: [
-			'src/templates/**.html'
-		],
-		srcFiles: [
-			'src/*.js',
-			'src/directives/*.js',
+
+		srcDir: 'src',
+		tempDir: '.tmp',
+		buildDir: 'build',
+		releaseDir: 'releases',
+
+		samplesDir: 'samples',
+
+		templates: ['<%= srcDir %>/templates/**.html'],
+
+		watchFilesSrc: [
+			'<%= srcDir%>/**/*',
 			'<%= ngtemplates.uiTreeGrid.dest %>'
 		],
-		buildFolder: [
-			'build'
+		watchFilesSamples: [
+			'<%= samplesDir%>/**/*'
+		],
+		srcFilesJs: [
+			'<%= srcDir%>/**.js',
+			'<%= srcDir%>/**/*.js',
+			'<%= ngtemplates.uiTreeGrid.dest %>'
 		],
 		// Config Tasks
 		watch: {
-			livereload: {
+			samples: {
 				options: {
-					livereload: '<%= connect.options.livereload %>'
+					livereload: true
 				},
+				tasks: ['buildSamples'],
 				files: [
-					'<%= srcFiles %>',
-					'src/style/**.css'
+					'<%= watchFilesSrc %>',
+					'<%= watchFilesSamples %>'
 				]
 			}
 		},
@@ -36,11 +48,11 @@ module.exports = function (grunt) {
 				port: 9000,
 				hostname: '0.0.0.0'
 			},
-			livereload: {
+			samples: {
 				options: {
 					open: true,
 					livereload: true,
-					base: ['./samples/', './build/']
+					base: ['<%= samplesDir %>', '<%= tempDir %>']
 				}
 			}
 		},
@@ -48,10 +60,11 @@ module.exports = function (grunt) {
 			options: {
 				jshintrc: '.jshintrc'
 			},
-			all: ['<%= srcFiles %>']
+			all: ['<%= srcDir %>', 'Gruntfile.js']
 		},
 		clean: {
-			build: ['<%= buildFolder %>']
+			temp: ['<%= tempDir %>'],
+			build: ['<%= buildDir %>']
 		},
 		ngtemplates: {
 			options: {
@@ -59,7 +72,7 @@ module.exports = function (grunt) {
 					collapseBooleanAttributes: true,
 					collapseWhitespace: true,
 					removeAttributeQuotes: true,
-					removeComments: true, // Only if you don't use comment directives!
+					removeComments: true,
 					removeEmptyAttributes: true,
 					removeRedundantAttributes: true,
 					removeScriptTypeAttributes: true,
@@ -67,15 +80,15 @@ module.exports = function (grunt) {
 				}
 			},
 			uiTreeGrid: {
-				cwd: 'src/templates',
+				cwd: '<%= srcDir %>/templates',
 				src: '*.html',
-				dest: '<%= buildFolder %>/js/templates.js'
+				dest: '<%= tempDir %>/js/templates.js'
 			}
 		},
 		concat: {
 			options: {
 				banner: '/***********************************************\n' +
-					'* ui-tree-grid JavaScript Library\n' +
+					'* <%= pkg.name %> JavaScript Library\n' +
 					'* Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md \n' +
 					'* License: MIT (http://www.opensource.org/licenses/mit-license.php)\n' +
 					'* Compiled At: <%= grunt.template.today("mm/dd/yyyy HH:MM") %>\n' +
@@ -83,28 +96,64 @@ module.exports = function (grunt) {
 					'(function(window) {\n',
 				footer: '\n}(window));'
 			},
-			dist: {
-				src: ['<%= srcFiles %>'],
-				dest: '<%= buildFolder %>/js/ui-tree-grid.js'
+			build: {
+				src: ['<%= srcFilesJs %>'],
+				dest: '<%= buildDir %>/js/<%= pkg.name %>.js'
+			},
+			release: {
+				src: ['<%= srcFilesJs %>'],
+				dest: '<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.js'
+			},
+			samples: {
+				src: ['<%= srcFilesJs %>'],
+				dest: '<%= tempDir %>/js/<%= pkg.name %>.js'
 			}
 		},
 		ngmin: {
-			build: {
-				src: ['<%= buildFolder %>/js/ui-tree-grid.js'],
-				dest: '<%= buildFolder %>/js/ui-tree-grid.js'
+			build:{
+				src: ['<%= buildDir %>/js/<%= pkg.name %>.js'],
+				dest: '<%= buildDir %>/js/<%= pkg.name %>.js'
+			},
+			release:{
+				src: ['<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.js'],
+				dest: '<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.js'
+			},
+			samples: {
+				src: ['<%= tempDir %>/js/<%= pkg.name %>.js'],
+				dest: '<%= tempDir %>/js/<%= pkg.name %>.js'
 			}
 		},
 		uglify: {
-			uiTreeGrid: {
+			build:{
 				files: {
-					'<%= buildFolder %>/js/ui-tree-grid.min.js': ['<%= buildFolder %>/js/ui-tree-grid.js']
+					'<%= buildDir %>/js/<%= pkg.name %>.min.js': ['<%= buildDir %>/js/<%= pkg.name %>.js']
+				}
+			},
+			release:{
+				files: {
+					'<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.min.js': ['<%= releaseDir %>/js/<%= pkg.name %>-<%= pkg.version %>.js']
+				}
+			},
+			samples: {
+				files: {
+					'<%= tempDir %>/js/<%= pkg.name %>.min.js': ['<%= tempDir %>/js/<%= pkg.name %>.js']
 				}
 			}
 		},
 		cssmin: {
-			build: {
+			build:{
 				files: {
-					'<%= buildFolder %>/css/ui-tree-grid.min.css': ['src/style/ui-tree-grid.css']
+					'<%= buildDir %>/css/<%= pkg.name %>.min.css': ['<%= srcDir %>/style/<%= pkg.name %>.css']
+				}
+			},
+			release:{
+				files: {
+					'<%= releaseDir %>/<%= pkg.version %>/css/<%= pkg.name %>-<%= pkg.version %>.min.css': ['<%= srcDir %>/style/<%= pkg.name %>.css']
+				}
+			},
+			samples: {
+				files: {
+					'<%= tempDir %>/css/<%= pkg.name %>.min.css': ['<%= srcDir %>/style/<%= pkg.name %>.css']
 				}
 			}
 		}
@@ -113,22 +162,41 @@ module.exports = function (grunt) {
 	/*
 	 Tasks
 	 */
-	grunt.registerTask('serve', function () {
+	grunt.registerTask('samples', function () {
 		grunt.task.run([
-			'build',
-			'connect:livereload',
-			'watch'
+			'buildSamples',
+			'connect:samples',
+			'watch:samples'
 		]);
 	});
 
+	grunt.registerTask('buildSamples', 'Build ui-tree-grid to samples', [
+		'jshint',
+		'clean:temp',
+		'ngtemplates',
+		'concat:samples',
+		'ngmin:samples',
+		'uglify:samples',
+		'cssmin:samples',
+	]);
+
 	grunt.registerTask('build', 'Build ui-tree-grid', [
-		'clean',
+		'jshint',
+		'clean:build',
+		'ngtemplates',
+		'concat:build',
+		'ngmin:build',
+		'uglify:build',
+		'cssmin:build',
+	]);
+
+	grunt.registerTask('release', 'Build ui-tree-grid', [
 		'jshint',
 		'ngtemplates',
-		'concat',
-		'ngmin',
-		'uglify',
-		'cssmin'
+		'concat:release',
+		'ngmin:release',
+		'uglify:release',
+		'cssmin:release',
 	]);
 
 	grunt.registerTask('default', [
