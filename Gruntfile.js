@@ -131,7 +131,7 @@ module.exports = function (grunt) {
 			},
 			release:{
 				files: {
-					'<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.min.js': ['<%= releaseDir %>/js/<%= pkg.name %>-<%= pkg.version %>.js']
+					'<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.min.js': ['<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.js']
 				}
 			},
 			samples: {
