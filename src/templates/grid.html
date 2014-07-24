@@ -7,7 +7,7 @@
     </div>
     <div class="tg">
         <div ng-repeat="row in treeData" class="row">
-            <div class="column lvl-{{row.lvl}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">
+            <div class="column lvl-{{row.lvl}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">
                 {{row[column.id]}}
             </div>
         </div>

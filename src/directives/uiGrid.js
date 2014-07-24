@@ -12,6 +12,8 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter
 		}
 
 		scope.columns = [];
+
+		console.log(scope.data);
 		Object.keys(scope.data[0]).forEach(function (item) {
 			scope.columns.push({
 				id: item,
@@ -69,12 +71,12 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter
 		link: function ($scope, $elm, attrs) {
 			$scope.treeData = [];
 			$scope.columns = $scope.$eval(attrs.columns);
-			defineColumnsIfNotExists($scope);
 
 			$scope.predicate = 'name';
 			$scope.reverse = false;
 
 			$scope.data.$promise.then(function (data) {
+				defineColumnsIfNotExists($scope);
 				$scope.treeData = generate(sort(data, $filter, $scope.predicate, $scope.reverse), 1);
 			});
 
