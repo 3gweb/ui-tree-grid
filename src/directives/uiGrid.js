@@ -31,10 +31,11 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig) {
 		scope: {
 			searchText: '=',
 			iconTemplate: '@',
-			selectRow: '&'
+			selectRow: '&',
+			data: '='
 		},
 		link: function ($scope, $elm, attrs) {
-			$scope.data = $scope.$eval(attrs.data);
+
 			$scope.columns = $scope.$eval(attrs.columns);
 
 			defineColumnsIfNotExists($scope);

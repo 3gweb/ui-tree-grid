@@ -10,18 +10,21 @@
 <body>
 
     <section class="container" ng-controller="SampleCtrl">
+
         <label for="search">search</label>
         <input type="text" ng-model="search"/>
         <div
             ui-grid=""
             columns="[{id: 'name', label: 'Nome'}, {id: 'idade', label: 'Idade'}]"
-            data="[{name: 'Abner', idade: 29, child: [{name: 'Guilherme', idade: 28, child: [{name: 'Bruna', idade: 16 },{name: 'Adilson', idade: 18, child: [{name: 'Rafa', idade: 18 }] }] }] }, {name: 'Teste', idade: 28, child: [{name: 'Oppa', idade: 5 }] }]"
+            data="data"
             search-text="search"
             select-row="selectRow"
         ></div>
     </section>
 
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-resource.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
     <script type="application/javascript" src="/js/ui-tree-grid.min.js"></script>
     <script type="application/javascript" src="js/app.js"></script>
