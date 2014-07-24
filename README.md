@@ -5,6 +5,10 @@ Esta diretiva permite criar tabelas com sub linhas
 
 # Requisitos
 
+```shell
+bower install ui-tree-grid --save
+```
+
 ## Colaboradores
 
 Time ui-tree-grid:
