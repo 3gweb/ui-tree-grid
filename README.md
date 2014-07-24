@@ -9,6 +9,14 @@ Esta diretiva permite criar tabelas com sub linhas
 bower install ui-tree-grid --save
 ```
 
+```html
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-resource.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script type="application/javascript" src="ui-tree-grid/js/ui-tree-grid.min.js"></script>
+```
+
 ## Colaboradores
 
 Time ui-tree-grid:
