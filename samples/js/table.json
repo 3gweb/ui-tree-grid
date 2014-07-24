@@ -13,45 +13,45 @@
 		"children": [
 			{
 				"name": "Roberta",
-				"email": "Aline@gmail.com",
+				"email": "roberta@gmail.com",
 				"idade": 29,
 				"cargo": "Professora"
 			},
 			{
 				"name": "Luciana",
-				"email": "bruna@gmail.com",
+				"email": "luciana@gmail.com",
 				"idade": 27,
 				"cargo": "Guitarrista",
 				"children": [
 					{
 						"name": "Roberta",
-						"email": "Aline@gmail.com",
+						"email": "roberta@gmail.com",
 						"idade": 29,
 						"cargo": "Professora"
 					},
 					{
 						"name": "Luciana",
-						"email": "bruna@gmail.com",
+						"email": "luciana@gmail.com",
 						"idade": 27,
 						"cargo": "Guitarrista",
 						"children": []
 					},
 					{
 						"name": "Amanda",
-						"email": "carla@gmail.com",
+						"email": "amanda@gmail.com",
 						"idade": 23,
 						"cargo": "Dançarina"
 					},
 					{
 						"name": "Viki",
-						"email": "jessica@gmail.com",
+						"email": "viki@gmail.com",
 						"idade": 23,
 						"cargo": "Analista",
 						"children": []
 					},
 					{
 						"name": "Mayara",
-						"email": "maria@gmail.com",
+						"email": "mayara@gmail.com",
 						"idade": 21,
 						"cargo": "Programadora"
 					}
@@ -59,20 +59,20 @@
 			},
 			{
 				"name": "Amanda",
-				"email": "carla@gmail.com",
+				"email": "amanda@gmail.com",
 				"idade": 23,
 				"cargo": "Dançarina"
 			},
 			{
 				"name": "Viki",
-				"email": "jessica@gmail.com",
+				"email": "viki@gmail.com",
 				"idade": 23,
 				"cargo": "Analista",
 				"children": []
 			},
 			{
 				"name": "Mayara",
-				"email": "maria@gmail.com",
+				"email": "mayara@gmail.com",
 				"idade": 21,
 				"cargo": "Programadora"
 			}
@@ -92,33 +92,33 @@
 		"children": [
 			{
 				"name": "Kira",
-				"email": "Aline@gmail.com",
+				"email": "kira@gmail.com",
 				"idade": 29,
 				"cargo": "Professora"
 			},
 			{
 				"name": "Milena",
-				"email": "bruna@gmail.com",
+				"email": "milena@gmail.com",
 				"idade": 27,
 				"cargo": "Guitarrista",
 				"children": []
 			},
 			{
 				"name": "Karla",
-				"email": "carla@gmail.com",
+				"email": "karla@gmail.com",
 				"idade": 23,
 				"cargo": "Dançarina"
 			},
 			{
 				"name": "Tatiana",
-				"email": "jessica@gmail.com",
+				"email": "tatiana@gmail.com",
 				"idade": 23,
 				"cargo": "Analista",
 				"children": []
 			},
 			{
 				"name": "Josy",
-				"email": "maria@gmail.com",
+				"email": "josy@gmail.com",
 				"idade": 21,
 				"cargo": "Programadora"
 			}
@@ -131,4 +131,3 @@
 		"cargo": "Programadora"
 	}
 ]
-

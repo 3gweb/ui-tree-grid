@@ -20,23 +20,36 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter
 		});
 	}
 
+	function filter(arr, $filter, searchText) {
+		var newArr = angular.copy(arr);
+		(newArr || []).forEach(function (item) {
+			item.children = filter(item.children, $filter, searchText);
+		});
+
+		return $filter('filter')(newArr, searchText);
+	}
+
 	function sort(arr, $filter, predicate, reverse) {
-		(arr || []).forEach(function (item) {
+		var newArr = angular.copy(arr);
+		(newArr || []).forEach(function (item) {
 			item.children = sort(item.children, $filter, predicate, reverse);
 		});
 
-		return $filter('orderBy')(arr, predicate, reverse);
+		return $filter('orderBy')(newArr, predicate, reverse);
 	}
 
-	function generate(arr, newArr, lvl) {
-		(arr || []).forEach(function (row) {
-			var newRow = angular.copy(row);
-			newRow.lvl = lvl;
+	function generate(arr, lvl, arrOut) {
+		arrOut = arrOut || [];
+		var newArr = angular.copy(arr);
 
-			newArr.push(newRow);
-			generate(newRow.children, newArr, lvl + 1);
-			delete newRow.children;
+		(newArr|| []).forEach(function (row) {
+			row.lvl = lvl;
+			arrOut.push(row);
+			generate(row.children, lvl + 1, arrOut);
+			delete row.children;
 		});
+
+		return arrOut;
 	}
 
 	if (uiGridConfig) {
@@ -54,27 +67,22 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter
 			data: '='
 		},
 		link: function ($scope, $elm, attrs) {
-
 			$scope.treeData = [];
 			$scope.columns = $scope.$eval(attrs.columns);
-
 			defineColumnsIfNotExists($scope);
 
-			$scope.data.$promise.then(function(data){
-				generate(data, $scope.treeData, 1);
-			});
-
-
 			$scope.predicate = 'name';
-			$scope.reverse = true;
+			$scope.reverse = false;
+
+			$scope.data.$promise.then(function (data) {
+				$scope.treeData = generate(sort(data, $filter, $scope.predicate, $scope.reverse), 1);
+			});
 
 			$scope.sort = function (predicate, reverse) {
 				$scope.predicate = predicate;
 				$scope.reverse = !reverse;
 
-				$scope.treeData = [];
-
-				generate(sort($scope.data, $filter, $scope.predicate, $scope.reverse), $scope.treeData, 1);
+				$scope.treeData = generate(sort($scope.data, $filter, $scope.predicate, $scope.reverse), 1);
 			};
 
 			$scope.isVisibleIcon = function () {
@@ -84,7 +92,16 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter
 			$scope.clickRow = function (row, index) {
 				$scope.selectRow()(row, index);
 			};
+
+			$scope.$watch('searchText', function (value) {
+				$scope.treeData = [];
+
+				var filtro = filter($scope.data, $filter, value);
+
+				var filtroSort = sort(filtro, $filter, $scope.predicate, $scope.reverse);
+
+				$scope.treeData = generate(filtroSort, 1);
+			});
 		}
 	};
-
 });
