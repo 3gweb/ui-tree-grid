@@ -190,7 +190,7 @@ module.exports = function (grunt) {
 		'cssmin:build',
 	]);
 
-	grunt.registerTask('release', 'Build ui-tree-grid', [
+	grunt.registerTask('release', 'Build release ui-tree-grid', [
 		'jshint',
 		'ngtemplates',
 		'concat:release',
