@@ -1,6 +1,6 @@
 <div class="ui-tree-grid bordered">
     <div class="tg-header row">
-        <div ng-repeat="column in columns" class="column" ng-click="sort(column.id, reverse);">
+        <div class="column" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">
             {{column.label}}
             <span  ng-class="{true: 'fa fa-sort-asc', false: 'fa fa-sort-desc'}[reverse]" ng-if="column.id == predicate"></span>
         </div>
