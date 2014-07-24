@@ -9,8 +9,7 @@
             {{row[column.id]}}
         </div>
     </div>
-
-    <div class="tg" ng-if="row.child">
-        <div class="tg-include-child" ng-include="'grid-row.html'" ng-repeat="row in row.child | orderBy:predicate:reverse | filter:searchText"></div>
-    </div>
+</div>
+<div class="tg" ng-if="row.children">
+    <div class="tg-include-child" ng-include="'grid-row.html'" ng-repeat="row in row.children | orderBy:predicate:reverse | filter:searchText"></div>
 </div>
