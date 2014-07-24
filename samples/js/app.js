@@ -2,7 +2,7 @@
 	'use strict';
 	var app = angular.module('app', ['uiTreeGrid', 'ngResource']);
 
-	app.controller('SampleCtrl', function ($scope, $resource) {
+	app.controller('SampleCtrl', function ($scope, $resource, $filter) {
 
 		var Repository = $resource('js/table.json', {});
 		$scope.data = Repository.query();
