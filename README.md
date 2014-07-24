@@ -17,6 +17,14 @@ bower install ui-tree-grid --save
 <script type="application/javascript" src="ui-tree-grid/js/ui-tree-grid.min.js"></script>
 ```
 
+```html
+<div
+    ng-init="data = [{name: 'Guilherme'},{name: 'Rafael'}];"
+    ui-grid=""
+    data="data"
+></div>
+```
+
 ## Colaboradores
 
 Time ui-tree-grid:
