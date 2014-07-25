@@ -63,7 +63,7 @@ Scripts
    
    Passar o model que será utilizado para efetuar busca nos dados
 
-- **SELECT-ROW ** *(Opcional)*
+- **SELECT-ROW** *(Opcional)*
    
    Modificar o evento de select de linha
 
