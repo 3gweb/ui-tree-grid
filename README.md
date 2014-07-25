@@ -45,13 +45,13 @@ Scripts
 
 - data
 
-**Required**
-
-Recebe array com os dados da grid caso deseja utilizar sub grid será utilizado o nó children
-
-```json 
-[{name: 'GUilherme'}]
-```
+   **Required**
+   
+   Recebe array com os dados da grid caso deseja utilizar sub grid será utilizado o nó children
+   
+   ```json 
+   [{name: 'GUilherme'}]
+   ```
 
 - columns
  
