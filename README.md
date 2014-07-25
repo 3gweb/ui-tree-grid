@@ -3,19 +3,19 @@ ui-tree-grid
 
 Esta diretiva permite criar tabelas com sub linhas
 
-## Colaboradores
+### Colaboradores
 
 Time ui-tree-grid:
 * [Guilherme Mangabeira Gregio](http://github.com/guilhermegregio)
 * [Rafael Antonio Lucio](https://github.com/rafaellucio)
 
-## Instalação
+### Instalação
 
 ```shell
 bower install ui-tree-grid --save
 ```
 
-## Configuração
+### Configuração
 
 CSS
 ```html
@@ -30,7 +30,7 @@ Scripts
 <script type="application/javascript" src="ui-tree-grid/js/ui-tree-grid.min.js"></script>
 ```
 
-## Uso
+### Uso
 
 ```html
 <div
@@ -40,7 +40,7 @@ Scripts
 ></div>
 ```
 
-## Opções
+### Opções
 
 
 - **DATA** *(Required)*
@@ -71,4 +71,4 @@ Scripts
    
    Incluir template com icone
 
-## Teste
+### Teste
