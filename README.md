@@ -43,7 +43,7 @@ Scripts
 # Opções
 
 
-- DATA *Required*
+- **DATA** *Required*
    
    Recebe array com os dados da grid caso deseja utilizar sub grid será utilizado o nó children
    
