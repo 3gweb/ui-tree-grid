@@ -1,19 +1,21 @@
 'use strict';
 
-/* global _ */
 angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter) {
 
 	var options = {};
 
+	function isUndefined(value) {
+		return typeof value === 'undefined';
+	}
+
 	function defineColumnsIfNotExists(scope) {
 
-		if (!_.isUndefined(scope.columns)) {
+		if (!isUndefined(scope.columns)) {
 			return false;
 		}
 
 		scope.columns = [];
 
-		console.log(scope.data);
 		Object.keys(scope.data[0]).forEach(function (item) {
 			scope.columns.push({
 				id: item,
@@ -89,7 +91,7 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter
 			};
 
 			$scope.isVisibleIcon = function () {
-				return !_.isUndefined($scope.iconTemplate);
+				return !isUndefined($scope.iconTemplate);
 			};
 
 			$scope.clickRow = function (row, index) {

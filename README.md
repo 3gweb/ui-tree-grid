@@ -3,19 +3,34 @@ ui-tree-grid
 
 Esta diretiva permite criar tabelas com sub linhas
 
-# Requisitos
+# Colaboradores
+
+Time ui-tree-grid:
+* [Guilherme Mangabeira Gregio](http://github.com/guilhermegregio)
+* [Rafael Antonio Lucio](https://github.com/rafaellucio)
+
+# Instalação
 
 ```shell
 bower install ui-tree-grid --save
 ```
 
+# Configuração
+
+CSS
 ```html
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="ui-tree-grid/css/ui-tree-grid.min.css"/>
+```
+   
+Scripts
+```html
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-resource.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script type="application/javascript" src="ui-tree-grid/js/ui-tree-grid.min.js"></script>
 ```
+
+# Uso
 
 ```html
 <div
@@ -25,16 +40,24 @@ bower install ui-tree-grid --save
 ></div>
 ```
 
-## Colaboradores
+# Opções
 
-Time ui-tree-grid:
-* [Guilherme Mangabeira Gregio](http://github.com/guilhermegregio)
-* [Rafael Antonio Lucio](https://github.com/rafaellucio)
+| Atributo      | Descrição                                                                                    |
+|---------------|----------------------------------------------------------------------------------------------|
+| data          | Required                                                                                     |
+|               |                                                                                              |
+|               | Recebe array com os dados da grid caso deseja utilizar sub grid será utilizado o nó children |
+| columns       | Opcional                                                                                     |
+|               |                                                                                              |
+|               | Informa as colunas que devem ser utilizadas pela grid                                        |
+| search-text   | Opcional                                                                                     |
+|               |                                                                                              |
+|               | Passar o model que será utilizado para efetuar busca nos dados                               |
+| select-row    | Opcional                                                                                     |
+|               |                                                                                              |
+|               | Modificar o evento de select de linha                                                        |
+| icon-template | Opcional                                                                                     |
+|               |                                                                                              |
+|               | Incluir template com icone                                                                   |
 
-## Configuração
-
-## Teste
-
-## Uso
-
-## Opções
+# Teste
