@@ -42,22 +42,12 @@ Scripts
 
 # Opções
 
-| Atributo      | Descrição                                                                                    |
-|---------------|----------------------------------------------------------------------------------------------|
-| data          | Required                                                                                     |
-|               |                                                                                              |
-|               | Recebe array com os dados da grid caso deseja utilizar sub grid será utilizado o nó children |
-| columns       | Opcional                                                                                     |
-|               |                                                                                              |
-|               | Informa as colunas que devem ser utilizadas pela grid                                        |
-| search-text   | Opcional                                                                                     |
-|               |                                                                                              |
-|               | Passar o model que será utilizado para efetuar busca nos dados                               |
-| select-row    | Opcional                                                                                     |
-|               |                                                                                              |
-|               | Modificar o evento de select de linha                                                        |
-| icon-template | Opcional                                                                                     |
-|               |                                                                                              |
-|               | Incluir template com icone                                                                   |
+|      Atributo | Descrição                                                                                                 |
+|--------------:|-----------------------------------------------------------------------------------------------------------|
+|          data | **Required**<br/>Recebe array com os dados da grid caso deseja utilizar sub grid será utilizado o nó children |
+|       columns | **Opcional**<br/>Informa as colunas que devem ser utilizadas pela grid                                        |
+|   search-text | **Opcional**<br/>Passar o model que será utilizado para efetuar busca nos dados                               |
+|    select-row | **Opcional**<br/>Modificar o evento de select de linha                                                        |
+| icon-template | **Opcional**<br/>Incluir template com icone                                                                   |
 
 # Teste
