@@ -37,10 +37,11 @@
     font-weight: bold;
 }
 .ui-tree-grid .column {
-    width: 150px;
     padding: 0 15px;
+    overflow: hidden;
     line-height: 40px;
     white-space: nowrap;
+    vertical-align: top;
     display: inline-block;
     text-overflow: ellipsis;
 }
@@ -80,21 +81,49 @@
     white-space: nowrap;
     margin-top:40px;
 }
-/*// UI-TREE-GRID LEVEL ONE */
+/*// UI-TREE-GRID LEVELS */
 .lvl-1 {}
-/*// UI-TREE-GRID LEVEL TWO */
 .lvl-2:first-child {
     padding-left: 35px;
 }
-/*// UI-TREE-GRID LEVEL THREE */
 .lvl-3:first-child {
     padding-left: 70px;
 }
-/*// UI-TREE-GRID LEVEL FOUR */
 .lvl-4:first-child {
     padding-left: 105px;
 }
-/*// UI-TREE-GRID LEVEL FIVE */
 .lvl-5:first-child {
     padding-left: 140px;
+}
+
+/*// UI-TREE-GRID LEVELS COLUMNS */
+.column.size-1 {
+    width: 100px;
+}
+.column.size-2 {
+    width: 150px;
+}
+.column.size-3 {
+    width: 200px;
+}
+.column.size-4 {
+    width: 250px;
+}
+.column.size-5 {
+    width: 300px;
+}
+.column.size-6 {
+    width: 350px;
+}
+.column.size-7 {
+    width: 400px;
+}
+.column.size-8 {
+    width: 450px;
+}
+.column.size-9 {
+    width: 500px;
+}
+.column.size-10 {
+    width: 550px;
 }
