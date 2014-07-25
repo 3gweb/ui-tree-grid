@@ -46,7 +46,7 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter
 		arrOut = arrOut || [];
 		var newArr = angular.copy(arr);
 
-		(newArr|| []).forEach(function (row) {
+		(newArr || []).forEach(function (row) {
 			row.lvl = lvl;
 			arrOut.push(row);
 			generate(row.children, lvl + 1, arrOut);
@@ -106,6 +106,10 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter
 				var filtroSort = sort(filtro, $filter, $scope.predicate, $scope.reverse);
 
 				$scope.treeData = generate(filtroSort, 1);
+			});
+
+			angular.element($elm.find('div')[1]).bind('scroll', function () {
+				$elm.find('div')[0].style.left = (this.scrollLeft*-1)+'px';
 			});
 		}
 	};

@@ -10,6 +10,7 @@
     overflow: hidden;
     margin-bottom: 15px;
     display: inline-block;
+    position: relative;
 }
 .ui-tree-grid .row {
     margin: 0;
@@ -25,8 +26,9 @@
     background-color: #dff9ff;
 }
 .ui-tree-grid .tg-header {
-    padding-right: 15px;
-    overflow-x: auto;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
 }
 .ui-tree-grid .tg-header.row:hover {
     background-color: transparent;
@@ -76,6 +78,7 @@
     max-height: 300px;
     overflow-y: auto;
     white-space: nowrap;
+    margin-top:40px;
 }
 /*// UI-TREE-GRID LEVEL ONE */
 .lvl-1 {}

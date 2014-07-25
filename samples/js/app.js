@@ -8,10 +8,10 @@
 		$scope.data = Repository.query();
 
 		$scope.columns = [
-			{id: 'name', label: 'Nome'},
-			{id: 'idade', label: 'Idade'},
-			{id: 'cargo', label: 'Cargo'},
-			{id: 'email', label: 'E-mail'}
+			{id: 'name', label: 'Nome', size: 5},
+			{id: 'idade', label: 'Idade', size: 1},
+			{id: 'cargo', label: 'Cargo', size: 3},
+			{id: 'email', label: 'E-mail', size: 4}
 		];
 
 		$scope.search = '';
