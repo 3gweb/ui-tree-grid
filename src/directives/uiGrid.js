@@ -25,6 +25,14 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			$scope.predicate = 'name';
 			$scope.reverse = false;
 
+			if (Util.isUndefined($scope.data.$promise)) {
+				$scope.data.$promise = {
+					then: function (fn) {
+						fn($scope.data);
+					}
+				};
+			}
+
 			$scope.data.$promise.then(function (data) {
 				Util.defineColumnsIfNotExists($scope);
 				$scope.treeData = Util.generate(Util.sort(data, $scope.predicate, $scope.reverse), 1);
