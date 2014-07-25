@@ -7,6 +7,13 @@
 		var Repository = $resource('js/table.json', {});
 		$scope.data = Repository.query();
 
+		$scope.columns = [
+			{id: 'name', label: 'Nome'},
+			{id: 'idade', label: 'Idade'},
+			{id: 'cargo', label: 'Cargo'},
+			{id: 'email', label: 'E-mail'}
+		];
+
 		$scope.search = '';
 
 		$scope.selectRow = function (att, index) {

@@ -66,7 +66,8 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter
 			searchText: '=',
 			iconTemplate: '@',
 			selectRow: '&',
-			data: '='
+			data: '=',
+			columns: '='
 		},
 		link: function ($scope, $elm, attrs) {
 			$scope.treeData = [];

@@ -11,11 +11,14 @@
 
     <section class="container" ng-controller="SampleCtrl">
 
-        <label for="search">search</label>
-        <input type="text" ng-model="search"/>
+        <div>
+            <label for="search">search</label>
+            <input type="text" ng-model="search"/>
+        </div>
+
         <div
             ui-grid=""
-            columns="[{id: 'name', label: 'Nome'}, {id: 'idade', label: 'Idade'}, {id: 'cargo', label: 'Cargo'}, {id: 'email', label: 'E-mail'}]"
+            columns="columns"
             data="data"
             search-text="search"
             select-row="selectRow"
