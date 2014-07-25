@@ -19,9 +19,8 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			data: '=',
 			columns: '='
 		},
-		link: function ($scope, $elm, attrs) {
+		link: function ($scope, $elm) {
 			$scope.treeData = [];
-			$scope.columns = $scope.$eval(attrs.columns);
 
 			$scope.predicate = 'name';
 			$scope.reverse = false;
