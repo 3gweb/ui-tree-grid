@@ -43,35 +43,39 @@ Scripts
 # Opções
 
 
-- data
+- DATA
 
    **Required**
    
    Recebe array com os dados da grid caso deseja utilizar sub grid será utilizado o nó children
    
    ```json 
-   [{name: 'GUilherme'}]
+   [
+      {
+         "name": "Guilherme"
+      }
+   ]
    ```
 
-- columns
+- COLUMNS
  
    **Opcional**
    
    Informa as colunas que devem ser utilizadas pela grid
 
-- search-text
+- SEARCH-TEXT
 
    **Opcional**
    
    Passar o model que será utilizado para efetuar busca nos dados
 
-- select-row 
+- SELECT-ROW 
 
    **Opcional**
    
    Modificar o evento de select de linha
 
-- icon-template
+- ICON-TEMPLATE
 
    **Opcional**
    
