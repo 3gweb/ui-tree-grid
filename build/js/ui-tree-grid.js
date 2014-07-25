@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 07/25/2014 18:16
+* Compiled At: 07/25/2014 18:28
 ***********************************************/
 (function (window) {
   'use strict';
@@ -37,6 +37,13 @@
           $scope.treeData = [];
           $scope.predicate = 'name';
           $scope.reverse = false;
+          if (Util.isUndefined($scope.data.$promise)) {
+            $scope.data.$promise = {
+              then: function (fn) {
+                fn($scope.data);
+              }
+            };
+          }
           $scope.data.$promise.then(function (data) {
             Util.defineColumnsIfNotExists($scope);
             $scope.treeData = Util.generate(Util.sort(data, $scope.predicate, $scope.reverse), 1);
