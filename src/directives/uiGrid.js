@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, $filter, Util) {
+angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 
 	var options = {};
 
