@@ -43,7 +43,7 @@ Scripts
 # Opções
 
 
-- **DATA** *Required*
+- **DATA** *(Required)*
    
    Recebe array com os dados da grid caso deseja utilizar sub grid será utilizado o nó children
    
@@ -55,19 +55,19 @@ Scripts
    ]
    ```
 
-- **COLUMNS** *Opcional*
+- **COLUMNS** *(Opcional)*
    
    Informa as colunas que devem ser utilizadas pela grid
 
-- **SEARCH-TEXT** *Opcional*
+- **SEARCH-TEXT** *(Opcional)*
    
    Passar o model que será utilizado para efetuar busca nos dados
 
-- **SELECT-ROW ** *Opcional*
+- **SELECT-ROW ** *(Opcional)*
    
    Modificar o evento de select de linha
 
-- **ICON-TEMPLATE** *Opcional*
+- **ICON-TEMPLATE** *(Opcional)*
    
    Incluir template com icone
 
