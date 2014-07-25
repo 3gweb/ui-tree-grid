@@ -55,26 +55,26 @@ Recebe array com os dados da grid caso deseja utilizar sub grid será utilizado 
 
 - columns
  
-**Opcional**
-
-Informa as colunas que devem ser utilizadas pela grid
+   **Opcional**
+   
+   Informa as colunas que devem ser utilizadas pela grid
 
 - search-text
 
-**Opcional**
-
-Passar o model que será utilizado para efetuar busca nos dados
+   **Opcional**
+   
+   Passar o model que será utilizado para efetuar busca nos dados
 
 - select-row 
 
-**Opcional**
-
-Modificar o evento de select de linha
+   **Opcional**
+   
+   Modificar o evento de select de linha
 
 - icon-template
 
-**Opcional**
-
-Incluir template com icone
+   **Opcional**
+   
+   Incluir template com icone
 
 # Teste
