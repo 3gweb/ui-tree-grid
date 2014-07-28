@@ -2,10 +2,12 @@
 
 angular.module('uiTreeGrid').service('Util', function ($filter) {
 
-	var Util = this;
-
 	this.isUndefined = function (value) {
 		return typeof value === 'undefined';
+	};
+
+	this.isEmpty = function (value) {
+		return typeof value === 'undefined' || value === null || value === '';
 	};
 
 	this.generate = function generate(arr, lvl, arrOut) {
@@ -40,19 +42,19 @@ angular.module('uiTreeGrid').service('Util', function ($filter) {
 		return $filter('orderBy')(newArr, predicate, reverse);
 	};
 
-	this.defineColumnsIfNotExists = function (scope) {
+	this.generateColumnsByData = function (data, childrenNode) {
 
-		if (!Util.isUndefined(scope.columns)) {
-			return false;
-		}
-
-		scope.columns = [];
-
-		Object.keys(scope.data[0]).forEach(function (item) {
-			scope.columns.push({
-				id: item,
-				label: item.camelCaseToNormalText()
+		var nodes = [];
+		Object.keys(data[0]).forEach(function (node) {
+			if (node === childrenNode) {
+				return false;
+			}
+			nodes.push({
+				id: node,
+				label: node.camelCaseToNormalText()
 			});
 		});
+
+		return nodes;
 	};
 });

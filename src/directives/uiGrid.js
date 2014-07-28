@@ -12,20 +12,18 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 		restrict: 'A',
 		replace: true,
 		templateUrl: 'grid.html',
-		scope: {
-			searchText: '=',
-			iconTemplate: '@',
-			selectRow: '&',
-			data: '=',
-			columns: '='
-		},
-		link: function ($scope, $elm) {
-			$scope.treeData = [];
+		link: function ($scope, $elm, attrs) {
 
-			$scope.predicate = 'name';
+			$scope.columns = $scope.$eval(attrs.columns);
+			$scope.data = $scope.$eval(attrs.data);
+			$scope.searchText = $scope.$eval(attrs.searchText);
+			$scope.selectRow = $scope.$eval(attrs.selectRow);
+			$scope.childrenNode = attrs.childrenNode || 'children';
+			$scope.treeData = [];
+			$scope.predicate = '';
 			$scope.reverse = false;
 
-			if (Util.isUndefined($scope.data.$promise)) {
+			if (Util.isEmpty($scope.data.$promise)) {
 				$scope.data.$promise = {
 					then: function (fn) {
 						fn($scope.data);
@@ -33,8 +31,13 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 				};
 			}
 
+			if (Util.isEmpty($scope.columns)) {
+				$scope.data.$promise.then(function (data) {
+					$scope.columns = Util.generateColumnsByData(data, $scope.childrenNode);
+				});
+			}
+
 			$scope.data.$promise.then(function (data) {
-				Util.defineColumnsIfNotExists($scope);
 				$scope.treeData = Util.generate(Util.sort(data, $scope.predicate, $scope.reverse), 1);
 			});
 
@@ -50,7 +53,10 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			};
 
 			$scope.clickRow = function (row, index) {
-				$scope.selectRow()(row, index);
+				if(Util.isEmpty($scope.selectRow)){
+					return false;
+				}
+				$scope.selectRow(row, index);
 			};
 
 			$scope.$watch('searchText', function (value) {

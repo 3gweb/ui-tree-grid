@@ -6,31 +6,87 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/css/ui-tree-grid.min.css"/>
+    <link rel="stylesheet" href="/css/sample.css"/>
 </head>
 <body>
 
-    <section class="container" ng-controller="SampleCtrl">
-        <div
-            ui-grid=""
-            columns="[{id:'name', label:'Nome', size:3}]"
-            data="[{name: 'Guilherme'}, {name: 'Rafael'}]"
-        ></div>
-    </section>
+    <section class="container">
 
-    <section class="container" ng-controller="SampleCtrl">
-
-        <div>
-            <label for="search">search</label>
-            <input type="text" ng-model="search"/>
+        <div class="panel panel-default">
+            <div class="panel-heading">Minimal using</div>
+            <div class="panel-body">
+                <div
+                    ui-grid=""
+                    data="[
+                        {
+                            ide: 'Sublime Text',
+                            primaryLanguage: 'Javascript',
+                            license: '$ 70.00',
+                            community: 9
+                        },
+                        {
+                            ide: 'Vim',
+                            primaryLanguage: 'Javascript',
+                            license: 'free',
+                            community: 10
+                        },
+                        {
+                            ide: 'WebStorm',
+                            primaryLanguage: 'Javascript',
+                            license: '$ 49.00',
+                            community: 8
+                        },
+                        {
+                            ide: 'Eclipse',
+                            primaryLanguage: 'Java',
+                            license: 'free',
+                            community: 10
+                        }
+                    ]"
+                ></div>
+            </div>
         </div>
 
-        <div
-                ui-grid=""
-                columns="columns"
-                data="data"
-                search-text="search"
-                select-row="selectRow"
+        <div class="panel panel-default" ng-controller="ComplexCtrl">
+            <div class="panel-heading">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Complex Using</a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <form class="navbar-form navbar-right" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+                                </div>
+                            </form>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </div>
+            <div class="panel-body">
+                <div
+                    ui-grid=""
+                    data="data"
+                    columns="columns"
+                    select-text="selectText"
+                    select-row="selectRow"
                 ></div>
+
+                <pre>{{selected|json}}</pre>
+            </div>
+
+        </div>
+
     </section>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>

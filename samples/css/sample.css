@@ -1,0 +1,8 @@
+body {
+    margin: 30px 0;
+}
+
+.panel-heading .navbar {
+    margin: 0;
+    border:0;
+}
