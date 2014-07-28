@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 07/25/2014 18:28
+* Compiled At: 07/28/2014 18:17
 ***********************************************/
 (function (window) {
   'use strict';
@@ -26,26 +26,28 @@
         restrict: 'A',
         replace: true,
         templateUrl: 'grid.html',
-        scope: {
-          searchText: '=',
-          iconTemplate: '@',
-          selectRow: '&',
-          data: '=',
-          columns: '='
-        },
-        link: function ($scope, $elm) {
+        link: function ($scope, $elm, attrs) {
+          $scope.columns = $scope.$eval(attrs.columns);
+          $scope.data = $scope.$eval(attrs.data);
+          $scope.searchText = $scope.$eval(attrs.searchText);
+          $scope.selectRow = $scope.$eval(attrs.selectRow);
+          $scope.childrenNode = attrs.childrenNode || 'children';
           $scope.treeData = [];
-          $scope.predicate = 'name';
+          $scope.predicate = '';
           $scope.reverse = false;
-          if (Util.isUndefined($scope.data.$promise)) {
+          if (Util.isEmpty($scope.data.$promise)) {
             $scope.data.$promise = {
               then: function (fn) {
                 fn($scope.data);
               }
             };
           }
+          if (Util.isEmpty($scope.columns)) {
+            $scope.data.$promise.then(function (data) {
+              $scope.columns = Util.generateColumnsByData(data, $scope.childrenNode);
+            });
+          }
           $scope.data.$promise.then(function (data) {
-            Util.defineColumnsIfNotExists($scope);
             $scope.treeData = Util.generate(Util.sort(data, $scope.predicate, $scope.reverse), 1);
           });
           $scope.sort = function (predicate, reverse) {
@@ -57,7 +59,10 @@
             return !Util.isUndefined($scope.iconTemplate);
           };
           $scope.clickRow = function (row, index) {
-            $scope.selectRow()(row, index);
+            if (Util.isEmpty($scope.selectRow)) {
+              return false;
+            }
+            $scope.selectRow(row, index);
           };
           $scope.$watch('searchText', function (value) {
             $scope.treeData = [];
@@ -76,9 +81,11 @@
   angular.module('uiTreeGrid').service('Util', [
     '$filter',
     function ($filter) {
-      var Util = this;
       this.isUndefined = function (value) {
         return typeof value === 'undefined';
+      };
+      this.isEmpty = function (value) {
+        return typeof value === 'undefined' || value === null || value === '';
       };
       this.generate = function generate(arr, lvl, arrOut) {
         arrOut = arrOut || [];
@@ -105,17 +112,18 @@
         });
         return $filter('orderBy')(newArr, predicate, reverse);
       };
-      this.defineColumnsIfNotExists = function (scope) {
-        if (!Util.isUndefined(scope.columns)) {
-          return false;
-        }
-        scope.columns = [];
-        Object.keys(scope.data[0]).forEach(function (item) {
-          scope.columns.push({
-            id: item,
-            label: item.camelCaseToNormalText()
+      this.generateColumnsByData = function (data, childrenNode) {
+        var nodes = [];
+        Object.keys(data[0]).forEach(function (node) {
+          if (node === childrenNode) {
+            return false;
+          }
+          nodes.push({
+            id: node,
+            label: node.camelCaseToNormalText()
           });
         });
+        return nodes;
       };
     }
   ]);
@@ -123,7 +131,7 @@
     '$templateCache',
     function ($templateCache) {
       'use strict';
-      $templateCache.put('grid.html', '<div class="ui-tree-grid bordered"><div class="tg-header row"><div class="column size-{{column.size}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=tg><div ng-repeat="row in treeData" class=row><div class="column lvl-{{row.lvl}} size-{{column.size}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">{{row[column.id]}}</div></div></div></div>');
+      $templateCache.put('grid.html', '<div class="ui-tree-grid bordered"><div class="tg-header row"><div class="column size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=tg><div ng-repeat="row in treeData" class=row><div class="column lvl-{{row.lvl}} size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">{{row[column.id]}}</div></div></div></div>');
     }
   ]);
 }(window));
