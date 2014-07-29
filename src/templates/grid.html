@@ -9,7 +9,7 @@
     <div class="tg">
         <div ng-repeat="row in treeData" class="row">
             <div class="column lvl-{{row.lvl}} size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">
-                {{row[column.id]}}
+                {{get(column.id, row)}}
             </div>
         </div>
     </div>

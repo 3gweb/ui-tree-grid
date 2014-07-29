@@ -12,7 +12,7 @@
 
     <section class="container">
 
-        <div class="panel panel-default">
+       <!-- <div class="panel panel-default">
             <div class="panel-heading">Minimal using</div>
             <div class="panel-body">
                 <div
@@ -51,7 +51,7 @@
             <div class="panel-heading">
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
+                        &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                 <span class="sr-only">Toggle navigation</span>
@@ -60,6 +60,46 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href="#">Complex Using</a>
+                        </div>
+
+                        &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <form class="navbar-form navbar-right" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+                                </div>
+                            </form>
+                        </div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;
+                    </div>&lt;!&ndash; /.container-fluid &ndash;&gt;
+                </nav>
+            </div>
+            <div class="panel-body">
+                <div
+                        ui-grid=""
+                        data="data"
+                        columns="columns"
+                        select-text="selectText"
+                        select-row="selectRow"
+                        ></div>
+
+                <pre>{{selected|json}}</pre>
+            </div>
+
+        </div>-->
+
+        <div class="panel panel-default" ng-controller="ExpensesCtrl">
+            <div class="panel-heading">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Expenses Table</a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -81,8 +121,6 @@
                     select-text="selectText"
                     select-row="selectRow"
                 ></div>
-
-                <pre>{{selected|json}}</pre>
             </div>
 
         </div>

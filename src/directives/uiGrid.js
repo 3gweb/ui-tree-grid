@@ -53,10 +53,14 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			};
 
 			$scope.clickRow = function (row, index) {
-				if(Util.isEmpty($scope.selectRow)){
+				if (Util.isEmpty($scope.selectRow)) {
 					return false;
 				}
 				$scope.selectRow(row, index);
+			};
+
+			$scope.get = function (field, row) {
+				return Util.deepFind(row, field);
 			};
 
 			$scope.$watch('searchText', function (value) {

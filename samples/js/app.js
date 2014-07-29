@@ -20,4 +20,25 @@
 			$scope.selected = att;
 		};
 	});
+
+	app.controller('ExpensesCtrl', function ($scope, $resource) {
+
+		var Repository = $resource('js/expenses.json', {});
+		$scope.data = Repository.query();
+
+		$scope.columns = [
+			{label: "Data", id: "date"},
+			{label: "Valor", id: "value"},
+			{label: "Tipo", id: "type.name"},
+			{label: "Banco", id: "bankAccount.bank.name"},
+			{label: "Agência", id: "bankAccount.agency"},
+			{label: "Conta", id: "bankAccount.currentAccount"}
+		];
+
+		$scope.search = '';
+
+		$scope.selectRow = function (att, index) {
+			$scope.selected = att;
+		};
+	});
 })(angular);
