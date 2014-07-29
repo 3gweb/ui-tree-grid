@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 07/28/2014 18:17
+* Compiled At: 07/29/2014 14:20
 ***********************************************/
 (function (window) {
   'use strict';
@@ -63,6 +63,9 @@
               return false;
             }
             $scope.selectRow(row, index);
+          };
+          $scope.get = function (field, row) {
+            return Util.deepFind(row, field);
           };
           $scope.$watch('searchText', function (value) {
             $scope.treeData = [];
@@ -125,13 +128,24 @@
         });
         return nodes;
       };
+      this.deepFind = function (obj, path) {
+        var paths = path.split('.'), current = obj, i;
+        for (i = 0; i < paths.length; ++i) {
+          if (current[paths[i]] === undefined) {
+            return undefined;
+          } else {
+            current = current[paths[i]];
+          }
+        }
+        return current;
+      };
     }
   ]);
   angular.module('uiTreeGrid').run([
     '$templateCache',
     function ($templateCache) {
       'use strict';
-      $templateCache.put('grid.html', '<div class="ui-tree-grid bordered"><div class="tg-header row"><div class="column size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=tg><div ng-repeat="row in treeData" class=row><div class="column lvl-{{row.lvl}} size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">{{row[column.id]}}</div></div></div></div>');
+      $templateCache.put('grid.html', '<div class="ui-tree-grid bordered"><div class="tg-header row"><div class="column size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=tg><div ng-repeat="row in treeData" class=row><div class="column lvl-{{row.lvl}} size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">{{get(column.id, row)}}</div></div></div></div>');
     }
   ]);
 }(window));
