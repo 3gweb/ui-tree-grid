@@ -1,43 +1,44 @@
 {
-  "name": "ui-tree-grid",
-  "version": "0.0.1",
-  "description": "Angular Directive for Tree Grid",
-  "scripts": {
-    "test": "grunt test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/guilhermegregio/ui-tree-grid.git"
-  },
-  "keywords": [
-    "angular",
-    "module",
-    "tree",
-    "grid",
-    "directive"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/guilhermegregio/ui-tree-grid/issues"
-  },
-  "homepage": "https://github.com/guilhermegregio/ui-tree-grid",
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-angular-templates": "^0.5.7",
-    "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-concat": "^0.5.0",
-    "grunt-contrib-connect": "^0.8.0",
-    "grunt-contrib-cssmin": "^0.10.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-uglify": "^0.5.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-karma": "^0.8.3",
-    "grunt-ngmin": "0.0.3",
-    "karma": "^0.12.19",
-    "karma-coverage": "^0.2.5",
-    "karma-jasmine": "^0.1.5",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "load-grunt-tasks": "^0.6.0",
-    "time-grunt": "^0.4.0"
-  }
+	"name": "ui-tree-grid",
+	"version": "0.0.1",
+	"description": "Angular Directive for Tree Grid",
+	"private": false,
+	"scripts": {
+		"test": "grunt test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/guilhermegregio/ui-tree-grid.git"
+	},
+	"keywords": [
+		"angular",
+		"module",
+		"tree",
+		"grid",
+		"directive"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/guilhermegregio/ui-tree-grid/issues"
+	},
+	"homepage": "https://github.com/guilhermegregio/ui-tree-grid",
+	"devDependencies": {
+		"grunt": "^0.4.5",
+		"grunt-angular-templates": "^0.5.7",
+		"grunt-contrib-clean": "^0.5.0",
+		"grunt-contrib-concat": "^0.5.0",
+		"grunt-contrib-connect": "^0.8.0",
+		"grunt-contrib-cssmin": "^0.10.0",
+		"grunt-contrib-jshint": "^0.10.0",
+		"grunt-contrib-uglify": "^0.5.0",
+		"grunt-contrib-watch": "^0.6.1",
+		"grunt-karma": "^0.8.3",
+		"grunt-ngmin": "0.0.3",
+		"karma": "^0.12.19",
+		"karma-coverage": "^0.2.5",
+		"karma-jasmine": "^0.1.5",
+		"karma-phantomjs-launcher": "^0.1.4",
+		"load-grunt-tasks": "^0.6.0",
+		"time-grunt": "^0.4.0"
+	}
 }
