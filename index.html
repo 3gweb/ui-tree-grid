@@ -1,0 +1,147 @@
+---
+layout: default
+---
+
+<!--
+<div class="home">
+
+    <div class="trigger">
+        {% for page in site.pages %}
+        {% if page.title %}<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>{% endif %}
+        {% endfor %}
+    </div>
+
+    <h1>Posts</h1>
+
+    <ul class="posts">
+        {% for post in site.posts %}
+            <li>
+                <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
+-->
+
+<h1>Samples.</h1>
+
+<section class="container">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Minimal using</div>
+        <div class="panel-body">
+            <div
+                    ui-grid=""
+                    data="[
+                        {
+                            ide: 'Sublime Text',
+                            primaryLanguage: 'Javascript',
+                            license: '$ 70.00',
+                            community: 9
+                        },
+                        {
+                            ide: 'Vim',
+                            primaryLanguage: 'Javascript',
+                            license: 'free',
+                            community: 10
+                        },
+                        {
+                            ide: 'WebStorm',
+                            primaryLanguage: 'Javascript',
+                            license: '$ 49.00',
+                            community: 8
+                        },
+                        {
+                            ide: 'Eclipse',
+                            primaryLanguage: 'Java',
+                            license: 'free',
+                            community: 10
+                        }
+                    ]"
+                    ></div>
+        </div>
+    </div>
+
+    <div class="panel panel-default" ng-controller="ComplexCtrl">
+        <div class="panel-heading">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Complex Using</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+                            </div>
+                        </form>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <div class="panel-body">
+            <div
+                    ui-grid=""
+                    data="data"
+                    columns="columns"
+                    select-text="selectText"
+                    select-row="selectRow"
+                    ></div>
+
+            <pre>{{selected|json}}</pre>
+        </div>
+
+    </div>
+
+    <div class="panel panel-default" ng-controller="ExpensesCtrl">
+        <div class="panel-heading">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Expenses Table</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+                            </div>
+                        </form>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <div class="panel-body">
+            <div
+                    ui-grid=""
+                    data="data"
+                    columns="columns"
+                    select-text="selectText"
+                    select-row="selectRow"
+                    ></div>
+        </div>
+
+    </div>
+
+</section>

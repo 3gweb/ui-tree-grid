@@ -1,0 +1,16 @@
+[
+	{
+		"date": "2013-01-01",
+		"value": "1000.00",
+		"type": {
+			"name": "Lazer"
+		},
+		"bankAccount": {
+			"bank": {
+				"name": "Itau"
+			},
+			"agency": "7171",
+			"currentAccount": "00008-1"
+		}
+	}
+]

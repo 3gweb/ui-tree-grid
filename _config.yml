@@ -1,0 +1,13 @@
+# Site settings
+title: UI Tree Grid
+email: guilherme@gregio.net
+description: "Tree Grid Component for AngularJS"
+baseurl: ""
+url: "http://uitreegridjs.com"
+twitter_username: jekyllrb
+github_username:  guilhermegregio
+repository_url: https://github.com/guilhermegregio/ui-tree-grid
+
+# Build settings
+markdown: kramdown
+permalink: pretty
