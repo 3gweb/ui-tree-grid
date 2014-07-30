@@ -1,6 +1,8 @@
 ui-tree-grid
 ============
 
+[![Build Status](https://secure.travis-ci.org/guilhermegregio/ui-tree-grid.png?branch=master)](https://travis-ci.org/guilhermegregio/ui-tree-grid)
+
 Esta diretiva permite criar tabelas com sub linhas
 
 ### Colaboradores
