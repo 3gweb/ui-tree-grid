@@ -208,4 +208,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', [
 		'build'
 	]);
+
+	grunt.registerTask('test', [
+		'karma:unit'
+	]);
 };
