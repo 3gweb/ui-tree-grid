@@ -31,6 +31,12 @@ module.exports = function (grunt) {
 			'<%= ngtemplates.uiTreeGrid.dest %>'
 		],
 		// Config Tasks
+		karma: {
+			unit: {
+				configFile: 'karma.conf.js',
+				singleRun: true
+			}
+		},
 		watch: {
 			samples: {
 				options: {
