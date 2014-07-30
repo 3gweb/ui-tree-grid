@@ -12,6 +12,7 @@ angular.module('uiTreeGrid').service('Util', function ($filter) {
 
 	this.generate = function generate(arr, lvl, arrOut) {
 		arrOut = arrOut || [];
+		lvl = lvl || 1;
 		var newArr = angular.copy(arr);
 
 		(newArr || []).forEach(function (row) {

@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "homepage": "http://guilhermegregio.github.io/ui-tree-grid/",
   "authors": [
-	  "Guilherme Mangabeira Gregio <guilherme@gregio.net>",
-	  "Rafael Antonio Lucio <rafaelantoniolucio@gmai.com>"
+    "Guilherme Mangabeira Gregio <guilherme@gregio.net>",
+    "Rafael Antonio Lucio <rafaelantoniolucio@gmai.com>"
   ],
   "description": "Angular Directive for Tree Grid",
   "main": "./build/ui-tree-grid.min.js",
@@ -15,5 +15,11 @@
     "grid",
     "directive"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "angular-mocks": "~1.2.21"
+  },
+  "dependencies": {
+    "angular-resource": "~1.2.21"
+  }
 }
