@@ -1,0 +1,129 @@
+/*
+ * Rafael Antonio Lucio
+ * @rafaellucio <rafaelantoniolucio@gmail.com>
+ */
+
+/*// UI-TREE-GRID DEFAULT */
+.ui-tree-grid {
+  width: auto;
+  max-width: 100%;
+  overflow: hidden;
+  margin-bottom: 15px;
+  display: inline-block;
+  position: relative;
+}
+.ui-tree-grid .row {
+  margin: 0;
+  width: auto;
+  white-space: nowrap;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e5e5e5;
+}
+.ui-tree-grid .row:last-child {
+  border-bottom: 0;
+}
+.ui-tree-grid .row:hover {
+  background-color: #dff9ff;
+}
+.ui-tree-grid .tg-header {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+}
+.ui-tree-grid .tg-header.row:hover {
+  background-color: transparent;
+}
+.ui-tree-grid .tg-header .column {
+  font-weight: bold;
+}
+.ui-tree-grid .column {
+  padding: 0 15px;
+  overflow: hidden;
+  line-height: 40px;
+  white-space: nowrap;
+  vertical-align: top;
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+/*// UI-TREE-GRID BORDERED */
+.ui-tree-grid.bordered {
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+}
+.ui-tree-grid.bordered .row {
+  border: 0;
+}
+.ui-tree-grid.bordered .row .column {
+  border-top: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+}
+.ui-tree-grid.bordered .row:first-child .column {
+  border-top: none;
+}
+.ui-tree-grid.bordered .row .column:last-child {
+  border-right: none;
+}
+.ui-tree-grid.bordered .tg-header {
+  border-bottom: 1px solid #e5e5e5;
+}
+.ui-tree-grid.bordered .tg-header .column {
+  border-top: none;
+}
+.ui-tree-grid.bordered .row .column.lvl-2,
+.ui-tree-grid.bordered .row .column.lvl-3,
+.ui-tree-grid.bordered .row .column.lvl-4,
+.ui-tree-grid.bordered .row .column.lvl-5 {
+  border-top: none;
+}
+.ui-tree-grid .tg {
+  max-height: 300px;
+  overflow-y: auto;
+  white-space: nowrap;
+  margin-top:40px;
+}
+/*// UI-TREE-GRID LEVELS */
+.lvl-1 {}
+.lvl-2:first-child {
+  padding-left: 35px;
+}
+.lvl-3:first-child {
+  padding-left: 70px;
+}
+.lvl-4:first-child {
+  padding-left: 105px;
+}
+.lvl-5:first-child {
+  padding-left: 140px;
+}
+
+/*// UI-TREE-GRID LEVELS COLUMNS */
+.column.size-1 {
+  width: 100px;
+}
+.column.size-2 {
+  width: 150px;
+}
+.column.size-3 {
+  width: 200px;
+}
+.column.size-4 {
+  width: 250px;
+}
+.column.size-5 {
+  width: 300px;
+}
+.column.size-6 {
+  width: 350px;
+}
+.column.size-7 {
+  width: 400px;
+}
+.column.size-8 {
+  width: 450px;
+}
+.column.size-9 {
+  width: 500px;
+}
+.column.size-10 {
+  width: 550px;
+}
