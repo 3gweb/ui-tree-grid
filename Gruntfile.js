@@ -152,12 +152,12 @@ module.exports = function (grunt) {
 			},
 			build: {
 				files: {
-					'<%= buildDir %>/css/<%= pkg.name %>.min.css': '<%= srcDir %>/style/<%= pkg.name %>.scss'
+					'<%= buildDir %>/css/<%= pkg.name %>.min.css': '<%= srcDir %>/styles/<%= pkg.name %>.scss'
 				}
 			},
 			release: {
 				files: {
-					'<%= releaseDir %>/<%= pkg.version %>/css/<%= pkg.name %>-<%= pkg.version %>.min.css': '<%= srcDir %>/style/<%= pkg.name %>.scss'
+					'<%= releaseDir %>/<%= pkg.version %>/css/<%= pkg.name %>-<%= pkg.version %>.min.css': '<%= srcDir %>/styles/<%= pkg.name %>.scss'
 				}
 			},
 			samples: {
@@ -165,7 +165,7 @@ module.exports = function (grunt) {
 					outputStyle: 'nested'
 				},
 				files: {
-					'<%= tempDir %>/css/<%= pkg.name %>.css': '<%= srcDir %>/style/<%= pkg.name %>.scss'
+					'<%= tempDir %>/css/<%= pkg.name %>.css': '<%= srcDir %>/styles/<%= pkg.name %>.scss'
 				}
 			}
 		}
