@@ -1,0 +1,94 @@
+/* *
+* Render layouts
+*
+* @author Rafael Antonio Lucio <rafaelantoniolucio@gmail.com>
+* */
+
+/* _____ MIXINS _____ */
+
+// Fonts
+// ==========================================================================
+
+@mixin importFont($fontname, $filename, $svgLabel, $isBold:false, $isItalic:false) {
+	@font-face {
+		font-family: $fontname;
+		// IE9 Compat Modes
+		src: url('/fonts/#{$filename}.eot');
+		// IE6-IE8
+		src: url('/fonts/#{$filename}.eot?#iefix') format('embedded-opentype'), // Modern Browsers
+			 url('/fonts/#{$filename}.woff') format('woff'), // Safari, Android, iOS
+			 url('/fonts/#{$filename}.ttf') format('truetype'), // Legacy iOS
+			 url('/fonts/#{$filename}.svg##{$svgLabel}') format('svg');
+		@if $isBold {
+			font-weight: bold;
+		}
+		@else {
+			font-weight: normal;
+		}
+		@if $isItalic {
+			font-style: italic;
+		}
+		@else {
+			font-style: normal;
+		}
+	}
+}
+
+// Units
+// ==========================================================================
+
+// Helpers
+// ==========================================================================
+
+@mixin flexWidth($flex-grow: 1, $flex-shrink: 1, $flex-basis: auto) {
+  flex: $flex-grow $flex-shrink $flex-basis;
+}
+
+@mixin fade ($duration: 0.2s) {
+  @include transition(opacity $duration linear, visibility $duration linear);
+}
+
+// Animations
+// ==========================================================================
+@mixin animate($name: fadeIn, $duration: 1s, $delay: 0.2s, $function: ease, $mode: both) {
+  @include experimental(animation, $name $duration $delay $function $mode);
+}
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -ms-transition: $transition;
+  transition: $transition;
+}
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -ms-transition: $transition;
+  transition: $transition;
+}
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// Transforms
+// ==========================================================================
+
+@mixin transform($string){
+  -webkit-transform: $string;
+  -moz-transform: $string;
+  -ms-transform: $string;
+  -o-transform: $string;
+  transform: $string;
+}
