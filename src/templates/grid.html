@@ -1,14 +1,13 @@
 <div class="ui-tree-grid bordered">
-    <div class="tg-header row">
-
-        <div class="column size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">
+    <div class="tg-header tg-row">
+        <div class="tg-column tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">
             {{column.label}}
             <span  ng-class="{true: 'fa fa-sort-asc', false: 'fa fa-sort-desc'}[reverse]" ng-if="column.id == predicate"></span>
         </div>
     </div>
-    <div class="tg">
-        <div ng-repeat="row in treeData" class="row">
-            <div class="column lvl-{{row.lvl}} size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">
+    <div class="tg-body">
+        <div ng-repeat="row in treeData" class="tg-row">
+            <div class="tg-column tg-lvl-{{row.lvl}} tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">
                 {{get(column.id, row)}}
             </div>
         </div>

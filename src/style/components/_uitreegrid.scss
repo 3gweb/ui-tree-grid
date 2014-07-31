@@ -1,0 +1,135 @@
+/* *
+* Render UI-TREE-GRID
+*
+* @author Rafael Antonio Lucio <rafaelantoniolucio@gmail.com>
+* */
+
+@include define("components-uitreegrid") {
+
+  /* _____ UNIVERSAL HELPERS _____ */
+
+  /*// UI-TREE-GRID DEFAULT */
+  .ui-tree-grid {
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    display: inline-block;
+    position: relative;
+  }
+  .ui-tree-grid .tg-row {
+    margin: 0;
+    width: auto;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .ui-tree-grid .tg-row:last-child {
+    border-bottom: 0;
+  }
+  .ui-tree-grid .tg-row:hover {
+    background-color: #dff9ff;
+  }
+  .ui-tree-grid .tg-header {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+  }
+  .ui-tree-grid .tg-header.tg-row:hover {
+    background-color: transparent;
+  }
+  .ui-tree-grid .tg-header .tg-column {
+    font-weight: bold;
+  }
+  .ui-tree-grid .tg-column {
+    padding: 0 15px;
+    overflow: hidden;
+    line-height: 40px;
+    white-space: nowrap;
+    vertical-align: top;
+    display: inline-block;
+    text-overflow: ellipsis;
+  }
+  /*// UI-TREE-GRID BORDERED */
+  .ui-tree-grid.bordered {
+    border-radius: 5px;
+    border: 1px solid #e5e5e5;
+  }
+  .ui-tree-grid.bordered .tg-row {
+    border: 0;
+  }
+  .ui-tree-grid.bordered .tg-row .tg-column {
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+  }
+  .ui-tree-grid.bordered .tg-row:first-child .tg-column {
+    border-top: none;
+  }
+  .ui-tree-grid.bordered .tg-row .tg-column:last-child {
+    border-right: none;
+  }
+  .ui-tree-grid.bordered .tg-header {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .ui-tree-grid.bordered .tg-header .column {
+    border-top: none;
+  }
+  .ui-tree-grid.bordered .tg-row .tg-column.tg-lvl-2,
+  .ui-tree-grid.bordered .tg-row .tg-column.tg-lvl-3,
+  .ui-tree-grid.bordered .tg-row .tg-column.tg-lvl-4,
+  .ui-tree-grid.bordered .tg-row .tg-column.tg-lvl-5 {
+    border-top: none;
+  }
+  .ui-tree-grid .tg-body {
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: nowrap;
+    margin-top:40px;
+  }
+  /*// UI-TREE-GRID LEVELS */
+  .tg-lvl-1 {}
+  .tg-lvl-2:first-child {
+    padding-left: 35px;
+  }
+  .tg-lvl-3:first-child {
+    padding-left: 70px;
+  }
+  .tg-lvl-4:first-child {
+    padding-left: 105px;
+  }
+  .tg-lvl-5:first-child {
+    padding-left: 140px;
+  }
+
+  /*// UI-TREE-GRID LEVELS COLUMNS */
+  .tg-column.tg-size-1 {
+    width: 100px;
+  }
+  .tg-column.tg-size-2 {
+    width: 150px;
+  }
+  .tg-column.tg-size-3 {
+    width: 200px;
+  }
+  .tg-column.tg-size-4 {
+    width: 250px;
+  }
+  .tg-column.tg-size-5 {
+    width: 300px;
+  }
+  .tg-column.tg-size-6 {
+    width: 350px;
+  }
+  .tg-column.tg-size-7 {
+    width: 400px;
+  }
+  .tg-column.tg-size-8 {
+    width: 450px;
+  }
+  .tg-column.tg-size-9 {
+    width: 500px;
+  }
+  .tg-column.tg-size-10 {
+    width: 550px;
+  }
+}

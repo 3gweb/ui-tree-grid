@@ -1,0 +1,21 @@
+/* *
+* Settings configurations globals of project
+*
+* @author Rafael Antonio Lucio <rafaelantoniolucio@gmail.com>
+* */
+
+@include define("project-globals") {
+	/* _____ GLOBAL DEFAULTS _____ */
+			
+	*, :before, :after {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	html, body {
+		width: 100%;
+		height: 100%;
+		font-size: 100%;
+		font-family: $font-family-base-project;
+	}
+}
