@@ -74,3 +74,7 @@ Scripts
    Incluir template com icone
 
 ### Teste
+
+```shell
+grunt test
+```
