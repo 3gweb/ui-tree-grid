@@ -1,25 +1,36 @@
 {
-  "name": "ui-tree-grid",
-  "version": "0.0.1",
-  "homepage": "http://guilhermegregio.github.io/ui-tree-grid/",
-  "authors": [
-    "Guilherme Mangabeira Gregio <guilherme@gregio.net>",
-    "Rafael Antonio Lucio <rafaelantoniolucio@gmai.com>"
-  ],
-  "description": "Angular Directive for Tree Grid",
-  "main": "./build/ui-tree-grid.min.js",
-  "keywords": [
-    "angular",
-    "module",
-    "tree",
-    "grid",
-    "directive"
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "angular-mocks": "~1.2.21"
-  },
-  "dependencies": {
-    "angular-resource": "~1.2.21"
-  }
+	"name": "ui-tree-grid",
+	"version": "0.0.1",
+	"homepage": "http://3gweb.github.io/ui-tree-grid/",
+	"authors": [
+		"Guilherme Mangabeira Gregio <guilherme@gregio.net>",
+		"Rafael Antonio Lucio <rafaelantoniolucio@gmai.com>"
+	],
+	"description": "Angular Directive for Tree Grid",
+	"main": "./build/ui-tree-grid.min.js",
+	"keywords": [
+		"angular",
+		"module",
+		"tree",
+		"grid",
+		"directive"
+	],
+	"ignore": [
+		"test",
+		"samples",
+		".gitignore",
+		".jshintrc",
+		"bower.json",
+		"Gruntfile.js",
+		"package.json",
+		".travis.yml",
+		"README.md"
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"angular-mocks": "~1.2.21"
+	},
+	"dependencies": {
+		"angular-resource": "~1.2.21"
+	}
 }

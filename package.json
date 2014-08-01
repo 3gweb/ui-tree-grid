@@ -2,14 +2,6 @@
 	"name": "ui-tree-grid",
 	"version": "0.0.1",
 	"description": "Angular Directive for Tree Grid",
-	"private": false,
-	"scripts": {
-		"test": "grunt test"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/guilhermegregio/ui-tree-grid.git"
-	},
 	"keywords": [
 		"angular",
 		"module",
@@ -17,11 +9,19 @@
 		"grid",
 		"directive"
 	],
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/guilhermegregio/ui-tree-grid/issues"
+	"private": false,
+	"scripts": {
+		"test": "grunt test"
 	},
-	"homepage": "https://github.com/guilhermegregio/ui-tree-grid",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/3gweb/ui-tree-grid.git"
+	},
+	"bugs": {
+		"url": "https://github.com/3gweb/ui-tree-grid/issues"
+	},
+	"homepage": "http://3gweb.github.io/ui-tree-grid/",
+	"license": "MIT",
 	"devDependencies": {
 		"grunt": "^0.4.5",
 		"grunt-angular-templates": "^0.5.7",
