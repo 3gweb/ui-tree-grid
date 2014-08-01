@@ -27,7 +27,7 @@
 }
 
 // Generate text ellipsis
-@mixin generate-ellipsis($max-width: auto) {
+@mixin generate-ellipsis($max-width: 100%) {
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
