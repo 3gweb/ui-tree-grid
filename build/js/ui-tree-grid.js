@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 07/29/2014 14:20
+* Compiled At: 07/31/2014 19:53
 ***********************************************/
 (function (window) {
   'use strict';
@@ -92,6 +92,7 @@
       };
       this.generate = function generate(arr, lvl, arrOut) {
         arrOut = arrOut || [];
+        lvl = lvl || 1;
         var newArr = angular.copy(arr);
         (newArr || []).forEach(function (row) {
           row.lvl = lvl;
@@ -145,7 +146,7 @@
     '$templateCache',
     function ($templateCache) {
       'use strict';
-      $templateCache.put('grid.html', '<div class="ui-tree-grid bordered"><div class="tg-header row"><div class="column size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=tg><div ng-repeat="row in treeData" class=row><div class="column lvl-{{row.lvl}} size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">{{get(column.id, row)}}</div></div></div></div>');
+      $templateCache.put('grid.html', '<div class="ui-tree-grid bordered"><div class="tg-header tg-row"><div class="tg-column tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=tg-body><div ng-repeat="row in treeData" class=tg-row><div class="tg-column tg-lvl-{{row.lvl}} tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">{{get(column.id, row)}}</div></div></div></div>');
     }
   ]);
 }(window));

@@ -146,20 +146,26 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		cssmin: {
-			build:{
+		sass: {
+			options: {
+				outputStyle: 'compressed'
+			},
+			build: {
 				files: {
-					'<%= buildDir %>/css/<%= pkg.name %>.min.css': ['<%= srcDir %>/style/<%= pkg.name %>.css']
+					'<%= buildDir %>/css/<%= pkg.name %>.min.css': '<%= srcDir %>/styles/<%= pkg.name %>.scss'
 				}
 			},
-			release:{
+			release: {
 				files: {
-					'<%= releaseDir %>/<%= pkg.version %>/css/<%= pkg.name %>-<%= pkg.version %>.min.css': ['<%= srcDir %>/style/<%= pkg.name %>.css']
+					'<%= releaseDir %>/<%= pkg.version %>/css/<%= pkg.name %>-<%= pkg.version %>.min.css': '<%= srcDir %>/styles/<%= pkg.name %>.scss'
 				}
 			},
 			samples: {
+				options: {
+					outputStyle: 'nested'
+				},
 				files: {
-					'<%= tempDir %>/css/<%= pkg.name %>.min.css': ['<%= srcDir %>/style/<%= pkg.name %>.css']
+					'<%= tempDir %>/css/<%= pkg.name %>.css': '<%= srcDir %>/styles/<%= pkg.name %>.scss'
 				}
 			}
 		}
@@ -183,7 +189,7 @@ module.exports = function (grunt) {
 		'concat:samples',
 		'ngmin:samples',
 		'uglify:samples',
-		'cssmin:samples',
+		'sass:samples',
 	]);
 
 	grunt.registerTask('build', 'Build ui-tree-grid', [
@@ -193,7 +199,7 @@ module.exports = function (grunt) {
 		'concat:build',
 		'ngmin:build',
 		'uglify:build',
-		'cssmin:build',
+		'sass:build',
 	]);
 
 	grunt.registerTask('release', 'Build release ui-tree-grid', [
@@ -202,7 +208,7 @@ module.exports = function (grunt) {
 		'concat:release',
 		'ngmin:release',
 		'uglify:release',
-		'cssmin:release',
+		'sass:release',
 	]);
 
 	grunt.registerTask('default', [
