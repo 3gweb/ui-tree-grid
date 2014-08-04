@@ -19,6 +19,7 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			$scope.searchText = $scope.$eval(attrs.searchText);
 			$scope.selectRow = $scope.$eval(attrs.selectRow);
 			$scope.childrenNode = attrs.childrenNode || 'children';
+			$scope.iconTemplate = attrs.iconTemplate;
 			$scope.treeData = [];
 			$scope.predicate = '';
 			$scope.reverse = false;
@@ -48,7 +49,10 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 				$scope.treeData = Util.generate(Util.sort($scope.data, $scope.predicate, $scope.reverse), 1);
 			};
 
-			$scope.isVisibleIcon = function () {
+			$scope.isVisibleIcon = function (index) {
+				if (index > 0) {
+					return false;
+				}
 				return !Util.isUndefined($scope.iconTemplate);
 			};
 

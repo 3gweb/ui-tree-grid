@@ -9,6 +9,7 @@
         <div class="tg-body">
             <div ng-repeat="row in treeData" class="tg-row">
                 <div class="tg-column tg-lvl-{{row.lvl}} tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">
+                    <span ng-if="isVisibleIcon($index)" class="icon-template" ng-include="iconTemplate"></span>
                     {{get(column.id, row)}}
                 </div>
             </div>
