@@ -7,11 +7,18 @@
 /* _____ MIXINS _____ */
 
 // Generate levels itens
-@mixin generate-level($class-name: 'tg-lvl', $number-level: 10, $increment: 35px) {
+@mixin generate-level($class-name: 'tg-lvl', $number-level: 10, $increment: 35px, $defualt-padding-left: 15px) {
   $star-value: 0;
   @for $i from 1 through $number-level {
-    .#{$class-name}-#{$i}:first-child {
-      padding-left: $star-value + $increment * $i;
+    @if $i == 1 {
+      .#{$class-name}-#{$i}:first-child {
+        padding-left: $defualt-padding-left;
+      }
+    }
+    @else {
+      .#{$class-name}-#{$i}:first-child {
+        padding-left: ($star-value + $increment * $i) - $increment;
+      }
     }
   }
 }
