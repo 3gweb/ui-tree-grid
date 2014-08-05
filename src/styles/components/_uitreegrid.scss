@@ -51,6 +51,31 @@
 .ui-tree-grid.bordered {
   border: $ui-tg-border;
   border-radius: $ui-tg-border-radius;
+  .tg-header {
+    &.tg-row {
+      .tg-column {
+        border-bottom: $ui-tg-border;
+      }
+    }
+  }
+  .tg-row {
+    border-bottom: none;
+    &:first-child {
+      .tg-column {
+        border-top: none;
+      }
+    }
+  }
+  .tg-column {
+    border-right: $ui-tg-border;
+    border-top: $ui-tg-border;
+    &:last-child {
+      border-right: none;
+    }
+    &:not(.tg-lvl-1) {
+      border-top: none;
+    }
+  }
 }
 /*// UI-TREE-GRID LEVELS */
 @include generate-level();
