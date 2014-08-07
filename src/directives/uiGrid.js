@@ -77,6 +77,11 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 				$scope.treeData = Util.generate(filtroSort, 1);
 			});
 
+			$scope.$watch('data', function (value) {
+				$scope.treeData = [];
+				$scope.treeData = Util.generate(value);
+			}, true);
+
 			angular.element($elm.find('div')[1]).bind('scroll', function () {
 				$elm.find('div')[0].style.left = (this.scrollLeft * -1) + 'px';
 			});
