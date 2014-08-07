@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 08/05/2014 11:12
+* Compiled At: 08/07/2014 16:07
 ***********************************************/
 (function (window) {
   'use strict';
@@ -77,6 +77,10 @@
             var filtroSort = Util.sort(filtro, $scope.predicate, $scope.reverse);
             $scope.treeData = Util.generate(filtroSort, 1);
           });
+          $scope.$watch('data', function (value) {
+            $scope.treeData = [];
+            $scope.treeData = Util.generate(value);
+          }, true);
           angular.element($elm.find('div')[1]).bind('scroll', function () {
             $elm.find('div')[0].style.left = this.scrollLeft * -1 + 'px';
           });
