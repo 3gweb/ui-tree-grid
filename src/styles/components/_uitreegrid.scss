@@ -44,15 +44,15 @@
 .ui-tree-grid .tg-header {
   top: 0;
   position: absolute;
-  background-color: #fff;
+  background-color: $ui-tg-header-row-bgcolor;
+  &:hover {
+    background-color: $ui-tg-header-row-bgcolor_hover;
+  }
 }
 .ui-tree-grid .tg-header .tg-column {
   font-size: $ui-tg-font-size;
   font-family: $ui-tg-font-family;
   font-weight: $ui-tg-font-weight-bold;
-}
-.ui-tree-grid .tg-header.tg-row:hover {
-  background-color: $ui-tg-row-bgcolor;
 }
 /*// UI-TREE-GRID BODY */
 .ui-tree-grid .tg-body {

@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 08/13/2014 16:43
+* Compiled At: 08/13/2014 17:42
 ***********************************************/
 (function (window) {
   'use strict';
