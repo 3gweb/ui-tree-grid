@@ -15,6 +15,7 @@
 }
 .tg-content-table {
   display: table;
+  position: relative;
   border-collapse: collapse;
 }
 .ui-tree-grid .tg-row {
@@ -39,6 +40,12 @@
   font-size: $ui-tg-font-size-mini;
   padding: $ui-tg-padding-vertical $ui-tg-padding-horizontal;
 }
+/*// UI-TREE-GRID HEADER */
+.ui-tree-grid .tg-header {
+  top: 0;
+  position: absolute;
+  background-color: #fff;
+}
 .ui-tree-grid .tg-header .tg-column {
   font-size: $ui-tg-font-size;
   font-family: $ui-tg-font-family;
@@ -46,6 +53,12 @@
 }
 .ui-tree-grid .tg-header.tg-row:hover {
   background-color: $ui-tg-row-bgcolor;
+}
+/*// UI-TREE-GRID BODY */
+.ui-tree-grid .tg-body {
+  margin-top: $ui-tg-line-height;
+  .tg-row:first-child {
+  }
 }
 /*// UI-TREE-GRID BORDERED */
 .ui-tree-grid.bordered {
