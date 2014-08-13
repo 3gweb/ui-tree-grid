@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 08/07/2014 16:07
+* Compiled At: 08/13/2014 16:43
 ***********************************************/
 (function (window) {
   'use strict';
@@ -32,10 +32,17 @@
           $scope.searchText = $scope.$eval(attrs.searchText);
           $scope.selectRow = $scope.$eval(attrs.selectRow);
           $scope.childrenNode = attrs.childrenNode || 'children';
+          $scope.fixedHeader = attrs.fixedHeader;
           $scope.iconTemplate = attrs.iconTemplate;
           $scope.treeData = [];
           $scope.predicate = '';
           $scope.reverse = false;
+          if ($scope.fixedHeader) {
+            angular.element($elm).bind('scroll', function (event) {
+              this.querySelector('.tg-header').style.top = event.target.scrollTop + 'px';
+              $scope.$apply();
+            });
+          }
           if (Util.isEmpty($scope.data.$promise)) {
             $scope.data.$promise = {
               then: function (fn) {
