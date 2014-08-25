@@ -18,6 +18,7 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			$scope.data = $scope.$eval(attrs.data);
 			$scope.searchText = $scope.$eval(attrs.searchText);
 			$scope.selectRow = $scope.$eval(attrs.selectRow);
+			$scope.controller = $scope.$eval(attrs.controller);
 			$scope.childrenNode = attrs.childrenNode || 'children';
 			$scope.fixedHeader = attrs.fixedHeader;
 			$scope.iconTemplate = attrs.iconTemplate;
@@ -92,6 +93,10 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 
 			angular.element($elm.find('div')[1]).bind('scroll', function () {
 				$elm.find('div')[0].style.left = (this.scrollLeft * -1) + 'px';
+			});
+
+			attrs.$observe('iconTemplate', function(value){
+				$scope.iconTemplate = value;
 			});
 		}
 	};
