@@ -12,6 +12,7 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 		restrict: 'A',
 		replace: true,
 		templateUrl: 'grid.html',
+		scope: true,
 		link: function ($scope, $elm, attrs) {
 
 			$scope.columns = $scope.$eval(attrs.columns);

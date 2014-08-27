@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 08/25/2014 14:05
+* Compiled At: 08/27/2014 11:24
 ***********************************************/
 (function (window) {
   'use strict';
@@ -26,6 +26,7 @@
         restrict: 'A',
         replace: true,
         templateUrl: 'grid.html',
+        scope: true,
         link: function ($scope, $elm, attrs) {
           $scope.columns = $scope.$eval(attrs.columns);
           $scope.data = $scope.$eval(attrs.data);
