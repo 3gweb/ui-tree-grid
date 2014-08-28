@@ -27,7 +27,7 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			$scope.predicate = '';
 			$scope.reverse = false;
 
-			if($scope.fixedHeader) {
+			if ($scope.fixedHeader) {
 				angular.element($elm).bind('scroll', function (event) {
 					this.querySelector('.tg-header').style.top = event.target.scrollTop + 'px';
 					$scope.$apply();
@@ -90,13 +90,16 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			$scope.$watch('data', function (value) {
 				$scope.treeData = [];
 				$scope.treeData = Util.generate(value);
+				$scope.cssSize = $elm.find('div').eq(1).css('width');
 			}, true);
 
-			angular.element($elm.find('div')[1]).bind('scroll', function () {
-				$elm.find('div')[0].style.left = (this.scrollLeft * -1) + 'px';
+			$elm.find('div').eq(1).bind('scroll', function () {
+				$elm.find('div').eq(0).css('left', (this.scrollLeft * -1) + 'px');
 			});
 
-			attrs.$observe('iconTemplate', function(value){
+			$scope.cssSize = $elm.find('div').eq(1).css('width');
+
+			attrs.$observe('iconTemplate', function (value) {
 				$scope.iconTemplate = value;
 			});
 		}
