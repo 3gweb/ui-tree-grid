@@ -1,5 +1,6 @@
 'use strict';
 
+/* global _*/
 angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 
 	var options = {};
@@ -73,10 +74,6 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 				$scope.selectRow(row, index);
 			};
 
-			$scope.get = function (field, row) {
-				return Util.deepFind(row, field);
-			};
-
 			$scope.$watch('searchText', function (value) {
 				$scope.treeData = [];
 
@@ -87,21 +84,62 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 				$scope.treeData = Util.generate(filtroSort, 1);
 			});
 
-			$scope.$watch('data', function (value) {
+			$scope.$watch('data', function (value, oldValue) {
+				var changes = _.difference(_.pluck(value, 'id'), _.pluck(oldValue, 'id'));
+
+				changes.forEach(function(id){
+					_.find(value, {id: id}).change = true;
+				});
+
 				$scope.treeData = [];
 				$scope.treeData = Util.generate(value);
-				$scope.cssSize = $elm.find('div').eq(1).css('width');
 			}, true);
 
 			$elm.find('div').eq(1).bind('scroll', function () {
 				$elm.find('div').eq(0).css('left', (this.scrollLeft * -1) + 'px');
 			});
 
-			$scope.cssSize = $elm.find('div').eq(1).css('width');
-
 			attrs.$observe('iconTemplate', function (value) {
 				$scope.iconTemplate = value;
 			});
 		}
+	};
+}).directive('uiCell', function (Util, $filter) {
+	var link = function ($scope) {
+		var column = $scope.column;
+		var row = $scope.row;
+
+		var value = Util.deepFind(row, column.id);
+
+		switch (column.format) {
+			case 'date':
+				value = $filter('date')(value);
+				break;
+			case 'currency':
+				value = $filter('currency')(value);
+				break;
+			case 'file':
+				value = $filter('convertFile')(value);
+				break;
+		}
+
+		$scope.value = value;
+
+	};
+
+	return {
+		restrict: 'A',
+		replace: true,
+		templateUrl: 'cell.html',
+		transclude: true,
+		scope: {
+			column: '=',
+			row: '='
+		},
+		link: link
+	};
+}).filter('convertFile', function ($sce) {
+	return function (fileId) {
+		return $sce.trustAsHtml('<a href="/service/download/:id" target="_blank" class="btn btn-primary btn-icon"><i class="fa fa-cloud-download"></i></a>'.replace(':id', fileId));
 	};
 });

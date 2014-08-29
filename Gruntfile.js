@@ -47,6 +47,12 @@ module.exports = function (grunt) {
 					'<%= watchFilesSrc %>',
 					'<%= watchFilesSamples %>'
 				]
+			},
+			build: {
+				tasks: ['build'],
+				files: [
+					'<%= watchFilesSrc %>'
+				]
 			}
 		},
 		connect: {

@@ -7,13 +7,11 @@
             </div>
         </div>
         <div class="tg-body">
-            <div ng-repeat="row in treeData" class="tg-row">
-                <div class="tg-column tg-lvl-{{row.lvl}} tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">
-                    <span ng-if="isVisibleIcon($index)" class="icon-template" ng-include="iconTemplate"></span>
-                    {{get(column.id, row)}}
-                </div>
+            <div ng-repeat="row in treeData" class="tg-row" ng-class="{'highlight-line':'row.change'}">
+				<div ui-cell="" column="column" row="row" class="tg-column tg-lvl-{{row.lvl}} tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);">
+					<span ng-if="isVisibleIcon($index)" class="icon-template" ng-include="iconTemplate"></span>
+				</div>
             </div>
-			<div ng-show="treeData.length === 0" style="width:{{cssSize}}"></div>
         </div>
     </div>
 </div>

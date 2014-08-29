@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 08/28/2014 14:23
+* Compiled At: 08/29/2014 18:20
 ***********************************************/
 (function (window) {
   'use strict';
@@ -14,6 +14,7 @@
   angular.module('uiTreeGrid', []);
   angular.module('uiTreeGrid').value('uiGridConfig', {});
   'use strict';
+  /* global _*/
   angular.module('uiTreeGrid').directive('uiGrid', [
     'uiGridConfig',
     'Util',
@@ -77,28 +78,67 @@
             }
             $scope.selectRow(row, index);
           };
-          $scope.get = function (field, row) {
-            return Util.deepFind(row, field);
-          };
           $scope.$watch('searchText', function (value) {
             $scope.treeData = [];
             var filtro = Util.filter($scope.data, value);
             var filtroSort = Util.sort(filtro, $scope.predicate, $scope.reverse);
             $scope.treeData = Util.generate(filtroSort, 1);
           });
-          $scope.$watch('data', function (value) {
+          $scope.$watch('data', function (value, oldValue) {
+            var changes = _.difference(_.pluck(value, 'id'), _.pluck(oldValue, 'id'));
+            changes.forEach(function (id) {
+              _.find(value, { id: id }).change = true;
+            });
             $scope.treeData = [];
             $scope.treeData = Util.generate(value);
-            $scope.cssSize = $elm.find('div').eq(1).css('width');
           }, true);
           $elm.find('div').eq(1).bind('scroll', function () {
             $elm.find('div').eq(0).css('left', this.scrollLeft * -1 + 'px');
           });
-          $scope.cssSize = $elm.find('div').eq(1).css('width');
           attrs.$observe('iconTemplate', function (value) {
             $scope.iconTemplate = value;
           });
         }
+      };
+    }
+  ]).directive('uiCell', [
+    'Util',
+    '$filter',
+    function (Util, $filter) {
+      var link = function ($scope) {
+        var column = $scope.column;
+        var row = $scope.row;
+        var value = Util.deepFind(row, column.id);
+        switch (column.format) {
+        case 'date':
+          value = $filter('date')(value);
+          break;
+        case 'currency':
+          value = $filter('currency')(value);
+          break;
+        case 'file':
+          value = $filter('convertFile')(value);
+          break;
+        }
+        $scope.value = value;
+      };
+      return {
+        restrict: 'A',
+        replace: true,
+        templateUrl: 'cell.html',
+        transclude: true,
+        scope: {
+          column: '=',
+          row: '='
+        },
+        link: link
+      };
+    }
+  ]).filter('convertFile', [
+    '$sce',
+    function ($sce) {
+      return function (fileId) {
+        return $sce.trustAsHtml('<a href="/service/download/:id" target="_blank" class="btn btn-primary btn-icon"><i class="fa fa-cloud-download"></i></a>'.replace(':id', fileId));
       };
     }
   ]);
@@ -202,7 +242,8 @@
     '$templateCache',
     function ($templateCache) {
       'use strict';
-      $templateCache.put('grid.html', '<div class="ui-tree-grid bordered"><div class=tg-content-table><div class="tg-header tg-row"><div class="tg-column tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=tg-body><div ng-repeat="row in treeData" class=tg-row><div class="tg-column tg-lvl-{{row.lvl}} tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);"><span ng-if=isVisibleIcon($index) class=icon-template ng-include=iconTemplate></span> {{get(column.id, row)}}</div></div><div ng-show="treeData.length === 0" style=width:{{cssSize}}></div></div></div></div>');
+      $templateCache.put('cell.html', '<div><span ng-transclude></span> <span ng-bind=value ng-if="column.format !== \'file\'"></span> <span ng-bind-html=value ng-if="column.format === \'file\'"></span></div>');
+      $templateCache.put('grid.html', '<div class="ui-tree-grid bordered"><div class=tg-content-table><div class="tg-header tg-row"><div class="tg-column tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=tg-body><div ng-repeat="row in treeData" class=tg-row ng-class="{\'highlight-line\':\'row.change\'}"><div ui-cell="" column=column row=row class="tg-column tg-lvl-{{row.lvl}} tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);"><span ng-if=isVisibleIcon($index) class=icon-template ng-include=iconTemplate></span></div></div></div></div></div>');
     }
   ]);
 }(window));
