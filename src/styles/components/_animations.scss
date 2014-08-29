@@ -1,0 +1,37 @@
+/* *
+* Render UI-TREE-GRID
+*
+* @author Rafael Antonio Lucio <rafaelantoniolucio@gmail.com>
+* */
+
+/* _____ UI-TREE-GRID ANIMATIONS _____ */
+
+@-webkit-keyframes highlight-line {
+  from {
+    background: $ui-tg-highlight-line-from;
+  }
+  to {
+    background: $ui-tg-highlight-line-to;
+  }
+}
+@-moz-keyframes highlight-line {
+  from {
+    background: $ui-tg-highlight-line-from;
+  }
+  to {
+    background: $ui-tg-highlight-line-to;
+  }
+}
+@keyframes highlight-line {
+  from {
+    background: $ui-tg-highlight-line-from;
+  }
+  to {
+    background: $ui-tg-highlight-line-to;
+  }
+}
+.tg-animate-included {
+  -webkit-animation: highlight-line $ui-tg-highlight-duration;
+  -moz-animation: highlight-line $ui-tg-highlight-duration;
+  animation: highlight-line $ui-tg-highlight-duration;
+}
