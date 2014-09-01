@@ -85,11 +85,18 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			});
 
 			$scope.$watch('data', function (value, oldValue) {
+
 				var changes = _.difference(_.pluck(value, 'id'), _.pluck(oldValue, 'id'));
 
-				changes.forEach(function(id){
-					_.find(value, {id: id}).change = true;
-				});
+				if (changes.length > 0) {
+					value.forEach(function (item) {
+						item.change = false;
+					});
+
+					changes.forEach(function (id) {
+						_.find(value, {id: id}).change = true;
+					});
+				}
 
 				$scope.treeData = [];
 				$scope.treeData = Util.generate(value);
