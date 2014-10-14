@@ -1,6 +1,6 @@
 <div ng-class="{true: 'tg-not-wrap-text', false: ''}[hasHtml]">
 	<span ng-transclude></span>
-	<span ng-bind="value" ng-if="!hasHtml"></span>
+	<span title="{{value}}" ng-bind="value" ng-if="!hasHtml"></span>
 	<span ng-bind-html="value" ng-if="hasHtml"></span>
 </div>
 
