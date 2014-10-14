@@ -1,6 +1,6 @@
 'use strict';
 
-/* global _*/
+/* global _ */
 angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 
 	var options = {};
@@ -115,6 +115,7 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 	var link = function ($scope) {
 		var column = $scope.column;
 		var row = $scope.row;
+		$scope.hasHtml = false;
 
 		var value = Util.deepFind(row, column.id);
 
@@ -126,7 +127,12 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 				value = $filter('currency')(value);
 				break;
 			case 'file':
+				$scope.hasHtml = true;
 				value = $filter('convertFile')(value);
+				break;
+			case 'tree':
+				$scope.hasHtml = true;
+				value = $filter('convertTree')(value);
 				break;
 		}
 
@@ -148,5 +154,24 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 }).filter('convertFile', function ($sce) {
 	return function (fileId) {
 		return $sce.trustAsHtml('<a href="/service/download/:id" target="_blank" class="btn btn-primary btn-icon"><i class="fa fa-cloud-download"></i></a>'.replace(':id', fileId));
+	};
+}).filter('convertTree', function ($sce) {
+	return function (tree) {
+		var newTree = [],
+			resultTree = '';
+
+		function generateTree(tree) {
+			newTree.unshift('<li class="tg-tree-list-item">' + tree.label + '</li>');
+			if (tree.parent) {
+				generateTree(tree.parent);
+			} else {
+				newTree[newTree.length - 1] = newTree[newTree.length - 1].replace('tg-tree-list-item', 'tg-tree-list-item mult-select-tree-last');
+			}
+		}
+
+		generateTree(tree);
+		resultTree = '<ul class="tg-tree-list tg-tree-list__readonly">' + newTree.join('') + '</ul>';
+
+		return $sce.trustAsHtml(resultTree);
 	};
 });

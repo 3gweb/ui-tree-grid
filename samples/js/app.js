@@ -28,6 +28,7 @@
 
 		$scope.columns = [
 			{label: "Data", id: "date"},
+			{label: "Tree", id: "tree", format: 'tree', size: 7},
 			{label: "Valor", id: "value"},
 			{label: "Tipo", id: "type.name"},
 			{label: "Banco", id: "bankAccount.bank.name"},

@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 09/03/2014 17:17
+* Compiled At: 10/14/2014 16:35
 ***********************************************/
 (function (window) {
   'use strict';
@@ -14,7 +14,7 @@
   angular.module('uiTreeGrid', []);
   angular.module('uiTreeGrid').value('uiGridConfig', {});
   'use strict';
-  /* global _*/
+  /* global _ */
   angular.module('uiTreeGrid').directive('uiGrid', [
     'uiGridConfig',
     'Util',
@@ -113,6 +113,7 @@
       var link = function ($scope) {
         var column = $scope.column;
         var row = $scope.row;
+        $scope.hasHtml = false;
         var value = Util.deepFind(row, column.id);
         switch (column.format) {
         case 'date':
@@ -122,7 +123,12 @@
           value = $filter('currency')(value);
           break;
         case 'file':
+          $scope.hasHtml = true;
           value = $filter('convertFile')(value);
+          break;
+        case 'tree':
+          $scope.hasHtml = true;
+          value = $filter('convertTree')(value);
           break;
         }
         $scope.value = value;
@@ -144,6 +150,24 @@
     function ($sce) {
       return function (fileId) {
         return $sce.trustAsHtml('<a href="/service/download/:id" target="_blank" class="btn btn-primary btn-icon"><i class="fa fa-cloud-download"></i></a>'.replace(':id', fileId));
+      };
+    }
+  ]).filter('convertTree', [
+    '$sce',
+    function ($sce) {
+      return function (tree) {
+        var newTree = [], resultTree = '';
+        function generateTree(tree) {
+          newTree.unshift('<li class="tg-tree-list-item">' + tree.label + '</li>');
+          if (tree.parent) {
+            generateTree(tree.parent);
+          } else {
+            newTree[newTree.length - 1] = newTree[newTree.length - 1].replace('tg-tree-list-item', 'tg-tree-list-item mult-select-tree-last');
+          }
+        }
+        generateTree(tree);
+        resultTree = '<ul class="tg-tree-list tg-tree-list__readonly">' + newTree.join('') + '</ul>';
+        return $sce.trustAsHtml(resultTree);
       };
     }
   ]);
@@ -247,7 +271,7 @@
     '$templateCache',
     function ($templateCache) {
       'use strict';
-      $templateCache.put('cell.html', '<div><span ng-transclude></span> <span ng-bind=value ng-if="column.format !== \'file\'"></span> <span ng-bind-html=value ng-if="column.format === \'file\'"></span></div>');
+      $templateCache.put('cell.html', '<div ng-class="{true: \'tg-not-wrap-text\', false: \'\'}[hasHtml]"><span ng-transclude></span> <span title={{value}} ng-bind=value ng-if=!hasHtml></span> <span ng-bind-html=value ng-if=hasHtml></span></div>');
       $templateCache.put('grid.html', '<div class="ui-tree-grid bordered"><div class=tg-content-table><div class="tg-header tg-row"><div class="tg-column tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="sort(column.id, reverse);">{{column.label}} <span ng-class="{true: \'fa fa-sort-asc\', false: \'fa fa-sort-desc\'}[reverse]" ng-if="column.id == predicate"></span></div></div><div class=tg-body><div ng-repeat="row in treeData" class=tg-row ng-class="{true: \'tg-animate-included\'}[row.change]"><div ui-cell="" column=column row=row class="tg-column tg-lvl-{{row.lvl}} tg-size-{{column.size||3}}" ng-repeat="column in columns" ng-click="clickRow(row, $index);"><span ng-if=isVisibleIcon($index) class=icon-template ng-include=iconTemplate></span></div></div></div></div></div>');
     }
   ]);
