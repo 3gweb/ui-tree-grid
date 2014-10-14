@@ -52,8 +52,13 @@
 			"label": "AGRAVO DE INSTRUMENTO",
 			"parent": {
 				"id": 1107,
-				"label": "PROTOCOLO DE RECURSO",
-				"parent": null,
+				"label": "PROVIDENCIAR A RETIRADA DO ALVARÁ E  O DEPÓSITO NA CONTA DO ESCRITÓRIO/CLIENTE PROVIDENCIAR A RETIRADA DO ALVARÁ E  O DEPÓSITO NA CONTA",
+				"parent": {
+					"id": 1107,
+					"label": "PROTOCOLO DE RECURSO",
+					"parent": null,
+					"form": null
+				},
 				"form": null
 			},
 			"form": null

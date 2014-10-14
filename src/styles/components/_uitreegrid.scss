@@ -22,7 +22,7 @@
 .ui-tree-grid .tg-row {
 	width: auto;
 	display: table-row;
-	//  white-space: nowrap;
+	white-space: nowrap;
 	box-sizing: border-box;
 	border-bottom: $ui-tg-border;
 	&:hover {
@@ -34,13 +34,20 @@
 }
 
 .ui-tree-grid .tg-column {
+	height: 100%;
 	display: table-cell;
 	vertical-align: top;
-	//  @include generate-ellipsis();
+	@include generate-ellipsis();
 	font-family: $ui-tg-font-family;
 	line-height: $ui-tg-line-height - 10;
 	font-size: $ui-tg-font-size-mini;
 	padding: $ui-tg-padding-vertical $ui-tg-padding-horizontal;
+}
+
+.ui-tree-grid .tg-column.tg-not-wrap-text {
+	overflow: auto;
+	overflow-y: hidden;
+	white-space: normal;
 }
 
 /*// UI-TREE-GRID HEADER */
