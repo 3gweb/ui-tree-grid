@@ -20,7 +20,7 @@
 .ui-tree-grid .tg-row {
   width: auto;
   display: table-row;
-  white-space: nowrap;
+//  white-space: nowrap;
   box-sizing: border-box;
   border-bottom: $ui-tg-border;
   &:hover {
@@ -33,9 +33,9 @@
 .ui-tree-grid .tg-column {
   display: table-cell;
   vertical-align: top;
-  @include generate-ellipsis();
+//  @include generate-ellipsis();
   font-family: $ui-tg-font-family;
-  line-height: $ui-tg-line-height;
+  line-height: $ui-tg-line-height - 10;
   font-size: $ui-tg-font-size-mini;
   padding: $ui-tg-padding-vertical $ui-tg-padding-horizontal;
 }
@@ -50,6 +50,7 @@
 }
 .ui-tree-grid .tg-header .tg-column {
   font-size: $ui-tg-font-size;
+  line-height: $ui-tg-line-height;
   font-family: $ui-tg-font-family;
   font-weight: $ui-tg-font-weight-bold;
 }
@@ -94,3 +95,53 @@
 
 /*// UI-TREE-GRID LEVELS COLUMNS */
 @include generate-width-columns();
+
+/*// SELECT2 TREE */
+.tg-tree-list.tg-tree-list__readonly {
+  padding: 0;
+  width: 100%;
+  margin: 5px 0;
+  list-style-type: none;
+}
+.tg-tree-list__readonly .tg-tree-list-item {
+  color: #333;
+  font-size: 13px;
+  padding: 5px 8px;
+  line-height: 13px;
+  margin-right: 13px;
+  margin-bottom: 5px;
+  position: relative;
+  display: inline-block;
+  text-transform: lowercase;
+  background-color: #E4E4E4;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.tg-tree-list__readonly .tg-tree-list-item:after {
+  content: '';
+  top: 50%;
+  width: 0;
+  height: 0;
+  right: -22px;
+  position: absolute;
+  border: 11px solid transparent;
+  border-left-color: #E4E4E4;
+
+  -webkit-webkit: translateY(-50%);
+  -moz-webkit: translateY(-50%);
+  -ms-webkit: translateY(-50%);
+  -o-webkit: translateY(-50%);
+  transform: translateY(-50%);
+}
+.tg-tree-list__readonly .tg-tree-list-item.mult-select-tree-last {
+  color: white;
+  margin-top: 3px;
+  margin-right: 0;
+  background-color: #777777;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.tg-tree-list__readonly .tg-tree-list-item.mult-select-tree-last:after {
+  display: none;
+}

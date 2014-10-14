@@ -11,6 +11,52 @@
 			},
 			"agency": "7171",
 			"currentAccount": "00008-1"
-		}
-	}
+		},
+        "tree": {
+            "id": 1116,
+            "label": "PROVIDENCIAR A RETIRADA DO ALVARÁ E  O DEPÓSITO NA CONTA DO ESCRITÓRIO/CLIENTE",
+            "parent": {
+                "id": 1107,
+                "label": "PROVIDENCIAR A RETIRADA DO ALVARÁ E  O DEPÓSITO NA CONTA",
+                "parent": {
+                    "id": 1107,
+                    "label": "LOREN DE TESTE",
+                    "parent": {
+                        "id": 1107,
+                        "label": "TESTE",
+                        "parent": null,
+                        "form": null
+                    },
+                    "form": null
+                },
+                "form": null
+            },
+            "form": null
+        }
+	},
+    {
+        "date": "2013-01-01",
+        "value": "1000.00",
+        "type": {
+            "name": "Lazer"
+        },
+        "bankAccount": {
+            "bank": {
+                "name": "Itau"
+            },
+            "agency": "7171",
+            "currentAccount": "00008-1"
+        },
+        "tree": {
+            "id": 1116,
+            "label": "AGRAVO DE INSTRUMENTO",
+            "parent": {
+                "id": 1107,
+                "label": "PROTOCOLO DE RECURSO",
+                "parent": null,
+                "form": null
+            },
+            "form": null
+        }
+    }
 ]

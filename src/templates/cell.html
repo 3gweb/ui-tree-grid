@@ -1,6 +1,6 @@
 <div>
 	<span ng-transclude></span>
-	<span ng-bind="value" ng-if="column.format !== 'file'"></span>
-	<span ng-bind-html="value" ng-if="column.format === 'file'"></span>
+    <span ng-bind="value" ng-if="!hasHtml"></span>
+    <span ng-bind-html="value" ng-if="hasHtml"></span>
 </div>
 
