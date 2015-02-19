@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 10/14/2014 16:35
+* Compiled At: 02/19/2015 17:56
 ***********************************************/
 (function (window) {
   'use strict';
@@ -117,7 +117,10 @@
         var value = Util.deepFind(row, column.id);
         switch (column.format) {
         case 'date':
-          value = $filter('date')(value);
+          value = $filter('date')(value, 'dd/MM/yyyy');
+          break;
+        case 'datetime':
+          value = $filter('date')(value, 'dd/MM/yyyy HH:mm');
           break;
         case 'currency':
           value = $filter('currency')(value);
@@ -125,6 +128,9 @@
         case 'file':
           $scope.hasHtml = true;
           value = $filter('convertFile')(value);
+          break;
+        case 'fileType':
+          value = $filter('fileType')(value);
           break;
         case 'tree':
           $scope.hasHtml = true;
@@ -170,7 +176,58 @@
         return $sce.trustAsHtml(resultTree);
       };
     }
-  ]);
+  ]).filter('fileType', function () {
+    return function (fileName) {
+      var msg = '';
+      var extension = fileName.split('.').pop();
+      switch (extension) {
+      case 'jpg':
+      case 'jpeg':
+      case 'bmp':
+      case 'gif':
+      case 'tif':
+        msg = 'Imagem';
+        break;
+      case 'zip':
+      case 'rar':
+      case '7z':
+        msg = 'Compactado';
+        break;
+      case 'doc':
+      case 'docx':
+        msg = 'Microsoft Word';
+        break;
+      case 'xls':
+      case 'xlsx':
+        msg = 'Microsoft Excel';
+        break;
+      case 'mp3':
+      case 'wav':
+      case 'mid':
+        msg = 'Audio';
+        break;
+      case 'avi':
+      case '3gp':
+      case 'mpeg':
+        msg = 'Video';
+        break;
+      case 'txt':
+        msg = 'Texto';
+        break;
+      case 'pdf':
+        msg = 'Adobe Acrobat Reader';
+        break;
+      case 'ppt':
+      case 'pptx':
+      case 'pps':
+        msg = 'Microsoft Power Point';
+        break;
+      default:
+        msg = 'Outros';
+      }
+      return msg;
+    };
+  });
   'use strict';
   /*global toString*/
   angular.module('uiTreeGrid').service('Util', [
