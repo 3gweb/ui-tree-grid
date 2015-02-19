@@ -121,7 +121,10 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 
 		switch (column.format) {
 			case 'date':
-				value = $filter('date')(value);
+				value = $filter('date')(value, 'dd/MM/yyyy');
+				break;
+			case 'datetime':
+				value = $filter('date')(value, 'dd/MM/yyyy HH:mm');
 				break;
 			case 'currency':
 				value = $filter('currency')(value);
@@ -129,6 +132,9 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 			case 'file':
 				$scope.hasHtml = true;
 				value = $filter('convertFile')(value);
+				break;
+			case 'fileType':
+				value = $filter('fileType')(value);
 				break;
 			case 'tree':
 				$scope.hasHtml = true;
@@ -173,5 +179,58 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 		resultTree = '<ul class="tg-tree-list tg-tree-list__readonly">' + newTree.join('') + '</ul>';
 
 		return $sce.trustAsHtml(resultTree);
+	};
+}).filter('fileType', function () {
+	return function (fileName) {
+		var msg = '';
+		var extension = fileName.split('.').pop();
+
+		switch (extension) {
+			case 'jpg':
+			case 'jpeg':
+			case 'bmp':
+			case 'gif':
+			case 'tif':
+				msg = 'Imagem';
+				break;
+			case 'zip':
+			case 'rar':
+			case '7z':
+				msg = 'Compactado';
+				break;
+			case 'doc':
+			case 'docx':
+				msg = 'Microsoft Word';
+				break;
+			case 'xls':
+			case 'xlsx':
+				msg = 'Microsoft Excel';
+				break;
+			case 'mp3':
+			case 'wav':
+			case 'mid':
+				msg = 'Audio';
+				break;
+			case 'avi':
+			case '3gp':
+			case 'mpeg':
+				msg = 'Video';
+				break;
+			case 'txt':
+				msg = 'Texto';
+				break;
+			case 'pdf':
+				msg = 'Adobe Acrobat Reader';
+				break;
+			case 'ppt':
+			case 'pptx':
+			case 'pps':
+				msg = 'Microsoft Power Point';
+				break;
+			default:
+				msg = 'Outros';
+		}
+
+		return msg;
 	};
 });

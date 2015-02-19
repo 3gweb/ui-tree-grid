@@ -27,8 +27,10 @@
 		$scope.data = Repository.query();
 
 		$scope.columns = [
-			{label: "Data", id: "date"},
+			{label: "Data", id: "date", format: 'date'},
+			{label: "Data", id: "date", format: 'datetime'},
 			{label: "Tree", id: "tree", format: 'tree', size: 7},
+			{label: "Arquivo", id: "file", format: 'fileType', size: 1},
 			{label: "Valor", id: "value"},
 			{label: "Tipo", id: "type.name"},
 			{label: "Banco", id: "bankAccount.bank.name"},

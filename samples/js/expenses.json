@@ -2,6 +2,7 @@
 	{
 		"date": "2013-01-01",
 		"value": "1000.00",
+		"file": "archive.docx",
 		"type": {
 			"name": "Lazer"
 		},
@@ -37,6 +38,7 @@
 	{
 		"date": "2013-01-01",
 		"value": "1000.00",
+		"file": "archive.txt",
 		"type": {
 			"name": "Lazer"
 		},
