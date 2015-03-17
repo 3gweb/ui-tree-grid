@@ -57,7 +57,9 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 				$scope.predicate = predicate;
 				$scope.reverse = !reverse;
 
-				$scope.treeData = Util.generate(Util.sort($scope.data, $scope.predicate, $scope.reverse), 1);
+				$scope.data.$promise.then(function (data) {
+					$scope.treeData = Util.generate(Util.sort(data, $scope.predicate, $scope.reverse), 1);
+				});
 			};
 
 			$scope.isVisibleIcon = function (index) {
