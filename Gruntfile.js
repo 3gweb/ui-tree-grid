@@ -100,12 +100,12 @@ module.exports = function (grunt) {
 		concat: {
 			options: {
 				banner: '/***********************************************\n' +
-					'* <%= pkg.name %> JavaScript Library\n' +
-					'* Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md \n' +
-					'* License: MIT (http://www.opensource.org/licenses/mit-license.php)\n' +
-					'* Compiled At: <%= grunt.template.today("mm/dd/yyyy HH:MM") %>\n' +
-					'***********************************************/\n' +
-					'(function(window) {\n',
+				'* <%= pkg.name %> JavaScript Library\n' +
+				'* Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md \n' +
+				'* License: MIT (http://www.opensource.org/licenses/mit-license.php)\n' +
+				'* Compiled At: <%= grunt.template.today("mm/dd/yyyy HH:MM") %>\n' +
+				'***********************************************/\n' +
+				'(function(window) {\n',
 				footer: '\n}(window));'
 			},
 			build: {
@@ -122,11 +122,11 @@ module.exports = function (grunt) {
 			}
 		},
 		ngmin: {
-			build:{
+			build: {
 				src: ['<%= buildDir %>/js/<%= pkg.name %>.js'],
 				dest: '<%= buildDir %>/js/<%= pkg.name %>.js'
 			},
-			release:{
+			release: {
 				src: ['<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.js'],
 				dest: '<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.js'
 			},
@@ -136,12 +136,12 @@ module.exports = function (grunt) {
 			}
 		},
 		uglify: {
-			build:{
+			build: {
 				files: {
 					'<%= buildDir %>/js/<%= pkg.name %>.min.js': ['<%= buildDir %>/js/<%= pkg.name %>.js']
 				}
 			},
-			release:{
+			release: {
 				files: {
 					'<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.min.js': ['<%= releaseDir %>/<%= pkg.version %>/js/<%= pkg.name %>-<%= pkg.version %>.js']
 				}
@@ -195,7 +195,7 @@ module.exports = function (grunt) {
 		'concat:samples',
 		'ngmin:samples',
 		'uglify:samples',
-		'sass:samples',
+		'sass:samples'
 	]);
 
 	grunt.registerTask('build', 'Build ui-tree-grid', [
@@ -205,7 +205,7 @@ module.exports = function (grunt) {
 		'concat:build',
 		'ngmin:build',
 		'uglify:build',
-		'sass:build',
+		'sass:build'
 	]);
 
 	grunt.registerTask('release', 'Build release ui-tree-grid', [
@@ -214,7 +214,7 @@ module.exports = function (grunt) {
 		'concat:release',
 		'ngmin:release',
 		'uglify:release',
-		'sass:release',
+		'sass:release'
 	]);
 
 	grunt.registerTask('default', [

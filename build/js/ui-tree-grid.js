@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 02/19/2015 17:56
+* Compiled At: 03/17/2015 13:08
 ***********************************************/
 (function (window) {
   'use strict';
@@ -64,7 +64,9 @@
           $scope.sort = function (predicate, reverse) {
             $scope.predicate = predicate;
             $scope.reverse = !reverse;
-            $scope.treeData = Util.generate(Util.sort($scope.data, $scope.predicate, $scope.reverse), 1);
+            $scope.data.$promise.then(function (data) {
+              $scope.treeData = Util.generate(Util.sort(data, $scope.predicate, $scope.reverse), 1);
+            });
           };
           $scope.isVisibleIcon = function (index) {
             if (index > 0) {

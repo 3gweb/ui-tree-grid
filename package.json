@@ -34,12 +34,13 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-karma": "^0.8.3",
     "grunt-ngmin": "0.0.3",
-    "grunt-sass": "^0.14.0",
+    "grunt-sass": "^0.18.1",
     "karma": "^0.12.19",
     "karma-coverage": "^0.2.5",
     "karma-jasmine": "^0.1.5",
     "karma-phantomjs-launcher": "^0.1.4",
     "load-grunt-tasks": "^0.6.0",
+    "node-sass": "^3.0.0-alpha.0",
     "time-grunt": "^0.4.0"
   }
 }
