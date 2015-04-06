@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 04/06/2015 17:16
+* Compiled At: 04/06/2015 17:23
 ***********************************************/
 (function (window) {
   'use strict';
@@ -118,7 +118,11 @@
         var match;
         $scope.hasHtml = false;
         var value = Util.deepFind(row, column.id);
-        switch (column.format) {
+        var format = '';
+        if (_.has(column.format)) {
+          format = column.format;
+        }
+        switch (format) {
         case 'currency':
           value = $filter('currency')(value);
           break;
@@ -133,12 +137,12 @@
           $scope.hasHtml = true;
           value = $filter('convertTree')(value);
           break;
-        case String(column.format.match(/unixTimestamp.*/)):
-          match = column.format.match(/(unixTimestamp)\((.*)\)/);
+        case String(format.match(/unixTimestamp.*/)):
+          match = format.match(/(unixTimestamp)\((.*)\)/);
           value = $filter(match[1])(value, match[2]);
           break;
-        case String(column.format.match(/usFullTimestamp.*/)):
-          match = column.format.match(/(usFullTimestamp)\((.*)\)/);
+        case String(format.match(/usFullTimestamp.*/)):
+          match = format.match(/(usFullTimestamp)\((.*)\)/);
           value = $filter(match[1])(value, match[2]);
           break;
         }
