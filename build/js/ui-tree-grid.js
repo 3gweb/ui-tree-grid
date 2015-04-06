@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 03/17/2015 13:08
+* Compiled At: 04/06/2015 17:16
 ***********************************************/
 (function (window) {
   'use strict';
@@ -14,7 +14,7 @@
   angular.module('uiTreeGrid', []);
   angular.module('uiTreeGrid').value('uiGridConfig', {});
   'use strict';
-  /* global _ */
+  /* global _, moment*/
   angular.module('uiTreeGrid').directive('uiGrid', [
     'uiGridConfig',
     'Util',
@@ -115,15 +115,10 @@
       var link = function ($scope) {
         var column = $scope.column;
         var row = $scope.row;
+        var match;
         $scope.hasHtml = false;
         var value = Util.deepFind(row, column.id);
         switch (column.format) {
-        case 'date':
-          value = $filter('date')(value, 'dd/MM/yyyy');
-          break;
-        case 'datetime':
-          value = $filter('date')(value, 'dd/MM/yyyy HH:mm');
-          break;
         case 'currency':
           value = $filter('currency')(value);
           break;
@@ -137,6 +132,14 @@
         case 'tree':
           $scope.hasHtml = true;
           value = $filter('convertTree')(value);
+          break;
+        case String(column.format.match(/unixTimestamp.*/)):
+          match = column.format.match(/(unixTimestamp)\((.*)\)/);
+          value = $filter(match[1])(value, match[2]);
+          break;
+        case String(column.format.match(/usFullTimestamp.*/)):
+          match = column.format.match(/(usFullTimestamp)\((.*)\)/);
+          value = $filter(match[1])(value, match[2]);
           break;
         }
         $scope.value = value;
@@ -160,7 +163,15 @@
         return $sce.trustAsHtml('<a href="/service/download/:id" target="_blank" class="btn btn-primary btn-icon"><i class="fa fa-cloud-download"></i></a>'.replace(':id', fileId));
       };
     }
-  ]).filter('convertTree', [
+  ]).filter('usFullTimestamp', function () {
+    return function (timestamp, format) {
+      return moment(timestamp, 'YYYYMMDDHHmmssSSS').format(format);
+    };
+  }).filter('unixTimestamp', function () {
+    return function (timestamp, format) {
+      return moment(timestamp, 'x').format(format);
+    };
+  }).filter('convertTree', [
     '$sce',
     function ($sce) {
       return function (tree) {
