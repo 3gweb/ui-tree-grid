@@ -2,7 +2,7 @@
 * ui-tree-grid JavaScript Library
 * Authors: https://github.com/guilhermegregio/ui-tree-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 04/06/2015 17:23
+* Compiled At: 04/07/2015 13:43
 ***********************************************/
 (function (window) {
   'use strict';
@@ -119,7 +119,7 @@
         $scope.hasHtml = false;
         var value = Util.deepFind(row, column.id);
         var format = '';
-        if (_.has(column.format)) {
+        if (_.has(column, 'format')) {
           format = column.format;
         }
         switch (format) {

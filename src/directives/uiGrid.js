@@ -125,7 +125,7 @@ angular.module('uiTreeGrid').directive('uiGrid', function (uiGridConfig, Util) {
 
 		var format = '';
 
-		if (_.has(column.format)) {
+		if (_.has(column, 'format')) {
 			format = column.format;
 		}
 
